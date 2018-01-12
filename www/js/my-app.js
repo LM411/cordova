@@ -104,6 +104,7 @@ $.ajax({
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
+            '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
             '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);

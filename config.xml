@@ -3,7 +3,7 @@
 
   versionCode is Android only
   version is in major.minor.patch format 
-                  <name>Spane</name>
+                      <name>Spane</name>
     <description>
       A job seeking platform to help better your chances for that dream job
   </description>

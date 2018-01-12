@@ -89,15 +89,15 @@ var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 
 $.ajax({
   // type: 'GET',
-  url: rootURL + '/posts?filter[posts_per_page]=400',
+  url: rootURL + '/posts',
   // dataType: 'json',
   success: function(data){
       
       $.each(data, function(index, value) {
         $$('#content-block-main').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
-              '<div class="ks-facebook-name">Selibeng.com</div>' +
+              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
             '<div class="card-content">' + 
@@ -120,8 +120,8 @@ $.ajax({
         $('#loader-image').hide();
       },
   error: function(error){
-      $$('.content-block-main').append('<div class="item-content">' + 
-          '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+          $$('#content-block-main').append('<div class="item-content">' + 
+              '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
       console.log(error);
   }
 

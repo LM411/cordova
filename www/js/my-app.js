@@ -122,6 +122,18 @@ $.ajax({
   error: function(error){
           $$('#content-block-main').append('<div class="item-content">' + 
               '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+            myApp.addNotification({
+            title: 'Network Problem',
+            closeIcon: true,
+            closeOnClick: true,
+              message: 'Your network seems to have a problem loading new content',
+              button: {
+                text: 'Close',
+                color: 'white',
+                close:true
+              }
+            });
+         //getOfflineData();
       console.log(error);
   }
 
@@ -344,3 +356,7 @@ function postBookMark(){
   // });
       
 }
+//initialize bookmarks
+getBookmarks();
+//initialize offline data
+getOfflineData();

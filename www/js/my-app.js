@@ -290,3 +290,57 @@ function getBookmarks(){
       // });
     }
 }
+
+//Global Variables Used
+var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
+//Bookmarks
+var bookID = getUrlParameter('bookmarkid');
+function postBookMark(){
+  // $$('.bookmark-modal').click(function () {
+    if (bookID != undefined){
+             $.ajax({
+              // type: 'GET',
+              url: rootURL + '/posts/'+bookID,
+              // dataType: 'json',
+              success: function(data){
+               //var bookmarksData = myApp.formGetData('spane-app-dev-Bookmarks');
+               var bdata = {'id':data.id,'date':data.date,'title':data.title.rendered,'content':data.content.rendered};
+               //var arrBookmarks = [];
+               var storedBookmarks = myApp.formGetData('spane-app-dev-Bookmarks');
+               if(storedBookmarks==null){
+                  myApp.formStoreData('spane-app-dev-Bookmarks',[bdata]);
+               }
+               else{
+                  var arrBookmarks = storedBookmarks;
+                  //console.log(bdata);
+                  arrBookmarks.push(bdata);
+            //if(bookmarksData == undefined){
+              //var obj = JSON.parse(bookmarksData);
+              //console.log(bookmarksData.posts = data);
+              
+              myApp.formStoreData('spane-app-dev-Bookmarks',arrBookmarks);
+             //}
+             //  else{
+              // // //jsonB = JSON.stringify(JSON.stringify(data));
+              // $.extend(bookmarksData.posts, bdata);
+              // // //jsonB = JSON.stringify(bookmarksData);
+              // // console.log('Appendiiiiiiiiiiiiiiiinnnnnnnnngggggggg');
+              // myApp.formStoreData('spane-app-dev-Bookmarks',bookmarksData);
+             //  }
+               }
+              
+              },
+              complete: function(){
+                // $('#loader-spinner').hide();
+              },
+              error: function(error){
+                  $$('.post-content-block').append('<div class="item-content">' + 
+                      '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+              console.log(error);
+              }
+          });
+    };
+    // alert('Post bookmarked');
+  // });
+      
+}

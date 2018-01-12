@@ -225,3 +225,33 @@ $.ajax({
 });
 
 // $$('a').addClass('external');
+
+//Display your last displayed data
+function getOfflineData(){
+  var offlineData = myApp.formGetData('spane-app-offline-data');
+  if(offlineData != null){
+      $.each(offlineData, function(index, value) {
+            $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+              '<div class="card-header">' +
+                  '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
+                  '<div class="ks-facebook-name">Selibeng.com</div>' +
+                  '<div class="ks-facebook-date">'+value.date+'</div>' +
+                '</div>' +
+                '<div class="card-content">' + 
+                  '<div class="card-content-inner">' +
+                   '<p>'+value.title.rendered+'</p>' +
+                    //'<p class="more-content">Views: '+value.link+'</p>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="card-footer">' +
+                '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
+                '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+                '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
+              '<div class="item-inner"><div class="item-title"></div>'+
+        '</div>');
+        fDate();
+        $('#loader-image').hide();
+        });
+        // console.log(bookmarks);
+    }
+}

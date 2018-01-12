@@ -28,10 +28,6 @@
   }
 }
 
-function test(){
-  window.open('http://apache.org', '_system','toolbar=no,location=no');
-}
-
 //Get parameters from URL
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -122,6 +118,7 @@ $.ajax({
   error: function(error){
           $$('#content-block-main').append('<div class="item-content">' + 
               '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+<<<<<<< HEAD
             myApp.addNotification({
             title: 'Network Problem',
             closeIcon: true,
@@ -134,6 +131,8 @@ $.ajax({
               }
             });
          //getOfflineData();
+=======
+>>>>>>> 430a4525ab776136575944035b43be0324015bbc
       console.log(error);
   }
 
@@ -150,7 +149,7 @@ $.ajax({
         $$('.post-content-block').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
-              '<div class="ks-facebook-name">Selibeng.com</div>' +
+              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
               '<div class="ks-facebook-date">'+data.date+'</div>' +
             '</div>' +
             '<div class="card-content">' + 
@@ -164,7 +163,7 @@ $.ajax({
           '<div class="item-inner"><div class="item-title"></div>');
         //console.log(value.title);
         fDate();
-        $$('a').addClass('external');
+        //$$('a').addClass('external');
       },
       complete: function(){
         $('#loader-spinner').hide();
@@ -208,13 +207,18 @@ $('#search-input').keyup( function(){
 
 //Check update
 var updateVersion = 0;
+<<<<<<< HEAD
 var currentVersion = 1.1; //need to connect to device API (suspended for now)
+=======
+var currentVersion = 1.0; //need to connect to device API (suspended for now)
+>>>>>>> 430a4525ab776136575944035b43be0324015bbc
 var updateURL = 'http://spaneapp.com/';
 $.ajax({
   url: updateURL + '/app-params.json',
   success: function(data){
         updateVersion = data.jUpdateVersion;
         if(updateVersion > currentVersion){
+<<<<<<< HEAD
         myApp.addNotification({
           title: 'New Update Available',
           closeIcon: true,
@@ -229,6 +233,22 @@ $.ajax({
         });
      }
      console.log(updateVersion);
+=======
+	      myApp.addNotification({
+	        title: 'New Update Available',
+	        closeIcon: true,
+	        closeOnClick: true,
+	        close:true,
+	          message: '<a href="http://spaneapp.com/spaneapp.apk" class="link external">Click here to <b>Download</b> new App version</a>',
+	          button: {
+	            text: 'Close',
+	            color: 'white',
+	            close:true
+	          }
+	      });
+	   }
+	   console.log(updateVersion);
+>>>>>>> 430a4525ab776136575944035b43be0324015bbc
   },
   error: function(error){
      console.log(error);
@@ -236,6 +256,7 @@ $.ajax({
 
 });
 
+<<<<<<< HEAD
 // $$('a').addClass('external');
 
 //Display your last displayed data
@@ -360,3 +381,6 @@ function postBookMark(){
 getBookmarks();
 //initialize offline data
 getOfflineData();
+=======
+//$$('a').addClass('external');
+>>>>>>> 430a4525ab776136575944035b43be0324015bbc

@@ -246,9 +246,9 @@ function getOfflineData(){
       $.each(offlineData, function(index, value) {
             $$('#content-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
-                  '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
-                  '<div class="ks-facebook-name">Selibeng.com</div>' +
-                  '<div class="ks-facebook-date">'+value.date+'</div>' +
+              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-date">'+value.date+'</div>' +
                 '</div>' +
                 '<div class="card-content">' + 
                   '<div class="card-content-inner">' +
@@ -276,9 +276,9 @@ function getBookmarks(){
       $.each(bookmarks, function(index, value) {
             $$('#bookmarks-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
-                  '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
-                  '<div class="ks-facebook-name">Selibeng.com</div>' +
-                  '<div class="ks-facebook-date">'+value.date+'</div>' +
+              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-date">'+value.date+'</div>' +
                 '</div>' +
                 '<div class="card-content">' + 
                   '<div class="card-content-inner">' +

@@ -110,6 +110,7 @@ $.ajax({
         //console.log(value.id);
         //Remove T from Date format
         fDate();
+        myApp.formStoreData('spane-app-offline-data',data);
       });
   },
   complete: function(){

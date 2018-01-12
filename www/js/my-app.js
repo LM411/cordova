@@ -208,27 +208,27 @@ $('#search-input').keyup( function(){
 
 //Check update
 var updateVersion = 0;
-var currentVersion = 0; //need to connect to device API (suspended for now)
-var updateURL = window.location;
+var currentVersion = 1.1; //need to connect to device API (suspended for now)
+var updateURL = 'http://spaneapp.com/';
 $.ajax({
   url: updateURL + '/app-params.json',
   success: function(data){
         updateVersion = data.jUpdateVersion;
         if(updateVersion > currentVersion){
-	      myApp.addNotification({
-	        title: 'New Update Available',
-	        closeIcon: true,
-	        closeOnClick: true,
-	        close:true,
-	          message: '<a href="http://spane.nsgplesotho.com/spane.apk" class="link external">Click here to <b>Download</b> new App version</a>',
-	          button: {
-	            text: 'Close',
-	            color: 'white',
-	            close:true
-	          }
-	      });
-	   }
-	   console.log(updateVersion);
+        myApp.addNotification({
+          title: 'New Update Available',
+          closeIcon: true,
+          closeOnClick: true,
+          close:true,
+            message: '<a href="http://spaneapp.com/spaneapp.apk" class="link external">Click here to <b>Download</b> new App version</a>',
+            button: {
+              text: 'Close',
+              color: 'white',
+              close:true
+            }
+        });
+     }
+     console.log(updateVersion);
   },
   error: function(error){
      console.log(error);

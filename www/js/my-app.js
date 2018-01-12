@@ -255,3 +255,38 @@ function getOfflineData(){
         // console.log(bookmarks);
     }
 }
+
+//list bookmarks on its page
+function getBookmarks(){
+  var bookmarks = myApp.formGetData('spane-app-dev-Bookmarks');
+  if(bookmarks != null){
+      $.each(bookmarks, function(index, value) {
+            $$('#bookmarks-block-main').append('<div class="card ks-facebook-card">' +
+              '<div class="card-header">' +
+                  '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
+                  '<div class="ks-facebook-name">Selibeng.com</div>' +
+                  '<div class="ks-facebook-date">'+value.date+'</div>' +
+                '</div>' +
+                '<div class="card-content">' + 
+                  '<div class="card-content-inner">' +
+                   '<p>'+value.title+'</p>' +
+                    // '<div class="more-content" id="more-content">'+value.content+'</div>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="card-footer">' +
+                '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
+                // '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal">Bookmark</a>'+
+                '<a class="button item-link external" id="bk-content">View</a></div>' +
+              '<div class="item-inner"><div class="item-title"></div>'+
+        '</div>');
+        fDate();
+        });
+        // console.log(bookmarks);
+
+     //    $$('#bk-content').click(function(){
+     //     $('#more-content').hide();
+      //  console.log('Clicked me');
+        
+      // });
+    }
+}

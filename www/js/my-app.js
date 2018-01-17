@@ -90,7 +90,7 @@ $.ajax({
   success: function(data){
       
       $.each(data, function(index, value) {
-        $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+        $$('#content-block-main').empty().append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +

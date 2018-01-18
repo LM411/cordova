@@ -363,7 +363,8 @@ getBookmarks();
 //initialize offline data
 getOfflineData();
 
-document.getElementById("checkConnection").addEventListener("click",checkConnection);
+
+checkConnection();
 function checkConnection() {
     var networkState = navigator.connection.type;
 
@@ -380,7 +381,7 @@ function checkConnection() {
     alert('Connection type: ' + states[networkState]);
 }
 
-checkConnection();
+
 
 //$$('a').addClass('external');
 

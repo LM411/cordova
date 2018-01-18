@@ -28,6 +28,10 @@
   }
 }
 
+function loadURL(url){
+      navigator.app.loadUrl(url, { openExternal:true });
+      return false;
+    } 
 //Get parameters from URL
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),

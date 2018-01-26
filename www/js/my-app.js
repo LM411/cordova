@@ -108,13 +108,14 @@ $.ajax({
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-            '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+            '<a  href="#" id="bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
             '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);
         //console.log(value.id);
         //Remove T from Date format
         fDate();
+        postBookMark();
         myApp.formStoreData('spane-app-offline-data',data);
       });
   },
@@ -263,12 +264,13 @@ function getOfflineData(){
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+                '<a  href="#" id="post-bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
                 '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
         fDate();
         $('#loader-image').hide();
+        postBookMark();
         });
         // console.log(bookmarks);
     }
@@ -313,10 +315,11 @@ function getBookmarks(){
 //Global Variables Used
 var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 //Bookmarks
-var bookID = getUrlParameter('bookmarkid');
+
 function postBookMark(){
-  // $$('.bookmark-modal').click(function () {
-    if (bookID != undefined){
+  var bookID = $('#bookmark-modal').attr('bookmarkid');
+   $$('.bookmark-modal').click(function () {
+      if (bookID != undefined){
              $.ajax({
               // type: 'GET',
               url: rootURL + '/posts/'+bookID,
@@ -333,21 +336,9 @@ function postBookMark(){
                   var arrBookmarks = storedBookmarks;
                   //console.log(bdata);
                   arrBookmarks.push(bdata);
-            //if(bookmarksData == undefined){
-              //var obj = JSON.parse(bookmarksData);
-              //console.log(bookmarksData.posts = data);
-              
-              myApp.formStoreData('spane-app-dev-Bookmarks',arrBookmarks);
-             //}
-             //  else{
-              // // //jsonB = JSON.stringify(JSON.stringify(data));
-              // $.extend(bookmarksData.posts, bdata);
-              // // //jsonB = JSON.stringify(bookmarksData);
-              // // console.log('Appendiiiiiiiiiiiiiiiinnnnnnnnngggggggg');
-              // myApp.formStoreData('spane-app-dev-Bookmarks',bookmarksData);
-             //  }
+                  myApp.formStoreData('spane-app-dev-Bookmarks',arrBookmarks);
                }
-              
+               alert('Post bookmarked, check Bookmarks to see your Post');
               },
               complete: function(){
                 // $('#loader-spinner').hide();
@@ -358,7 +349,9 @@ function postBookMark(){
               console.log(error);
               }
           });
-    };
+    }
+  }
+    
     // alert('Post bookmarked');
   // });
       

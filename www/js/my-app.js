@@ -293,11 +293,12 @@ function getBookmarks(){
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                // '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal">Bookmark</a>'+
+                '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal" data-index="'+bookmarks.indexOf(value)+'">Remove</a>'+
                 '<a class="button item-link external" id="bk-content">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
         fDate();
+        removeBookmarks(bookmarks);
         });
         // console.log(bookmarks);
 

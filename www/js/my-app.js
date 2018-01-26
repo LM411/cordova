@@ -403,3 +403,18 @@ function iconCategories(categoryId){
     $$('#catIcon').append('<i class="f7-icons">graph_square_fill</i>');
   }
 }
+
+//Remove Bookmarks
+function removeBookmarks(offlineData, value){
+    $('#bookmark-modal').click(function(){
+      //console.log('clicked');
+      var indexData = $$(this).attr('data-index');
+               //var storedBookmarks = myApp.formGetData('spane-app-dev-Bookmarks');
+               offlineData.splice(indexData,1);
+               //console.log(indexData);
+              
+              myApp.formStoreData('spane-app-dev-Bookmarks',offlineData);
+              alert('Your Post has been Removed in Bookmarks');
+    });
+         
+}

@@ -108,7 +108,7 @@ $.ajax({
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-            '<a  href="#" id="bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+            '<a  href="#" id="post-bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
             '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);
@@ -123,8 +123,8 @@ $.ajax({
         $('#loader-image').hide();
       },
   error: function(error){
-          $$('#content-block-main').append('<div class="item-content">' + 
-              '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+          // $$('#content-block-main').append('<div class="item-content">' + 
+          //     '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
 
             myApp.addNotification({
             title: 'Network Problem',
@@ -301,6 +301,8 @@ function getBookmarks(){
         '</div>');
         fDate();
         removeBookmarks(bookmarks);
+        $$('#bk-content').click(function(){
+            $('#more-content').hide();
         });
         // console.log(bookmarks);
 
@@ -308,17 +310,18 @@ function getBookmarks(){
      //     $('#more-content').hide();
       //  console.log('Clicked me');
         
-      // });
+       });
     }
 }
 
 //Global Variables Used
-var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
+//var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 //Bookmarks
 
 function postBookMark(){
-  var bookID = $('#bookmark-modal').attr('bookmarkid');
-   $$('.bookmark-modal').click(function () {
+  var bookID = $('#post-bookmark-modal').attr('data-bookmark');
+   $$('#post-bookmark-modal').click(function () {
+    //console.log(rootURL + '/posts/'+bookID);
       if (bookID != undefined){
              $.ajax({
               // type: 'GET',
@@ -341,7 +344,7 @@ function postBookMark(){
                alert('Post bookmarked, check Bookmarks to see your Post');
               },
               complete: function(){
-                // $('#loader-spinner').hide();
+                $('#loader-spinner').hide();
               },
               error: function(error){
                   $$('.post-content-block').append('<div class="item-content">' + 
@@ -350,10 +353,7 @@ function postBookMark(){
               }
           });
     }
-  }
-    
-    // alert('Post bookmarked');
-  // });
+  });
       
 }
 //initialize bookmarks
@@ -409,6 +409,7 @@ function removeBookmarks(offlineData, value){
               
               myApp.formStoreData('spane-app-dev-Bookmarks',offlineData);
               alert('Your Post has been Removed in Bookmarks');
+              location.reload(true);
     });
          
 }

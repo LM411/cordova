@@ -12,14 +12,14 @@
   <meta name="theme-color" content="#2196f3">
   <title>Spane | Work</title>
 
-  
+  <link rel="stylesheet" href="css/my-app.css">
   <link rel="stylesheet" href="../dist/css/framework7.min.css">
   <link rel="stylesheet" href="css/framework7.material.colors.css">
 
   <!--Stylesheet import-->
   <link rel="stylesheet" href="css/material-icons.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
-  <link rel="stylesheet" href="css/my-app.css">
+  
   <link rel="stylesheet" href="css/kitchen-sink.css">
 
 
@@ -165,7 +165,7 @@
         </div>
 
         <!--FLOATING ACTION BUTTON-->
-        <div class="fab fab-right-bottom">
+        <div id="fab" class="fab fab-right-bottom color-theme">
           <a href="#">
             <i class="icon f7-icons ios-only">add</i>
             <i class="icon f7-icons ios-only">close</i>
@@ -180,6 +180,14 @@
 
                  <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
                  <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="open-popup"><i class="icon material-icons">help</i></a></p>
+          </div>
+        </div>
+        <!--Floating button SpeedDial-->
+        <div class="speed-dial" id="#calendar-default">
+          <a href="#" class="floating-button"><i class="icon icon-plus"></i><i class="icon icon-close"></i></a>
+          <div class="speed-dial-buttons">
+            <a href="#"><i id="calendar-default" class="icon material-icons">today</i></a>
+            <a href="#" title="Share App" data-popup=".popup-doc" class="open-popup"><i class="icon material-icons">help</i></a>
           </div>
         </div>
         <!--END OF FLOATING ACTION-->

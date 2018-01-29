@@ -381,19 +381,19 @@ function checkConnection() {
 
 //Categories: 142, 175=jobs, 277, 149,380,
 function iconCategories(categoryId){
-  if(categoryId=='[142]'){
+  if(categoryId=='142'){
     $$('#catIcon').append('<i class="f7-icons">bookmark</i>');
   }
-  else if(categoryId=='[175]'){
+  else if(categoryId=='175'){
     $$('#catIcon').append('<i class="f7-icons">briefcase_fill</i>');
   }
-  else if(categoryId=='[277]'){
+  else if(categoryId=='277'){
     $$('#catIcon').append('<i class="f7-icons">star_fill</i>');
   }
-  else if(categoryId=='[149]'){
+  else if(categoryId=='149'){
     $$('#catIcon').append('<i class="f7-icons">persons</i>');
   }
-  else if(categoryId=='[380]'){
+  else if(categoryId=='380'){
     $$('#catIcon').append('<i class="f7-icons">graph_square_fill</i>');
   }
 }

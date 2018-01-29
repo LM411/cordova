@@ -370,8 +370,8 @@ getBookmarks();
 //initialize offline data
 getOfflineData();
 
-getPosts(jobs, '142');
-console.log(postURL);
+//getPosts(jobs, '142');
+//console.log(postURL);
 checkConnection();
 function checkConnection() {
     var networkState = navigator.connection.type;

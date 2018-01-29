@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com;style-src * 'unsafe-inline' 'self' data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;img-src * data: 'unsafe-inline' 'self' content:;fmedia-src mediastream;">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -12,15 +13,15 @@
   <meta name="theme-color" content="#2196f3">
   <title>Spane | Work</title>
 
-  
+  <link rel="stylesheet" href="css/my-app.css">
   <link rel="stylesheet" href="../dist/css/framework7.min.css">
   <link rel="stylesheet" href="css/framework7.material.colors.css">
-
+  <link rel="stylesheet" href="css/kitchen-sink.css">
   <!--Stylesheet import-->
   <link rel="stylesheet" href="css/material-icons.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
-  <link rel="stylesheet" href="css/my-app.css">
-  <link rel="stylesheet" href="css/kitchen-sink.css">
+  
+  
 
 
   <link rel="icon" href="img/icon.png">
@@ -43,7 +44,7 @@
           <div class="list">
             <ul>
               <li>
-                <a href="jobs.html" class="item-link item-content">
+                <a href="jobs.html" class="item-link item-content external">
                   <div class="item-media"><i class="material-icons">insert_drive_file</i></div>
                   <div class="item-inner">
                     <div class="item-title">Jobs</div>
@@ -52,7 +53,7 @@
                 </a>
               </li>
               <li>
-                <a href="articles.html" class="item-link item-content">
+                <a href="articles.html" class="item-link item-content external">
                   <div class="item-media"><i class="material-icons">view_headline</i></div>
                   <div class="item-inner">
                     <div class="item-title">Articles</div>
@@ -61,7 +62,7 @@
                 </a>
               </li>
               <li>
-                <a href="scholarships.html" class="item-link item-content">
+                <a href="scholarships.html" class="item-link item-content external">
                   <div class="item-media"><i class="material-icons">folder_open</i></div>
                   <div class="item-inner">
                     <div class="item-title">Scholarships</div>
@@ -70,7 +71,7 @@
                 </a>
               </li>
               <li>
-                <a href="tenders.html" class="item-link item-content">
+                <a href="tenders.html" class="item-link item-content external">
                   <div class="item-media"><i class="material-icons">indeterminate_check_box</i></div>
                   <div class="item-inner">
                     <div class="item-title">Tenders</div>
@@ -137,6 +138,7 @@
         </div>
         <!--END OF NAVIGATION BAR-->
         <div class="page-content">
+
           <!--TABBED MENU-->
           <div class="toolbar tabbar">
             <div class="toolbar-inner">
@@ -165,7 +167,12 @@
         </div>
 
         <!--FLOATING ACTION BUTTON-->
-        <div class="fab fab-right-bottom">
+        <style type="text/css">
+          #fab a{
+            background-color: #006696;
+          }
+        </style>
+        <div id="fab" class="fab fab-right-bottom">
           <a href="#">
             <i class="icon f7-icons ios-only">add</i>
             <i class="icon f7-icons ios-only">close</i>
@@ -173,18 +180,55 @@
             <i class="icon material-icons md-only">close</i>
           </a>
           <div class="fab-buttons fab-buttons-top">
-            <p class="buttons-row"><a href="#"><i id="calendar-default" class="icon material-icons">today</i></a>
-                </p>
+            <p class="buttons-row"><a href="bookmarks.html" class="item-link external"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
 
-                <p class="buttons-row"><a href="bookmarks.html"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
-
-                 <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
-                 <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="open-popup"><i class="icon material-icons">help</i></a></p>
+             <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
+             <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="open-popup"><i class="icon material-icons">help</i></a></p>
           </div>
         </div>
         <!--END OF FLOATING ACTION-->
-           <!-- Documentation Popup -->
-    
+
+        <!-- Documentation Popup -->
+        <div class="popup popup-doc">
+          <div class="content-block">
+            <h2>#SpaneWork Documentation</h2>
+              <hr>
+              <p>
+                <b>Introduction</b><br/>
+                #SpaneWork is a job seeking platform keeping you up-to-date with the latest in local and international jobs. It is an android
+                based platform running on <b>Android 2.3 Gingerbread</b> & above but for better performance <b>Android 4.1 KitKat</b> and above platforms
+                are advised.<br/><br/>
+                
+                <b>Features</b><br/>
+                1. View posts<br/>
+                2. View posts details<br/>
+                3. Share posts<br/>
+                4. Share app link<br/>
+                5. View calendar<br/>
+                6. App documentation<br/><br/>
+                
+               
+                <b>Terms of Use</b><br/>
+                Please note this is a post viewing platform and not a job application platform. No curriculum vitae will be received by our group
+                and no form of meetings are coordinated or arranged by our group. It is our users responsibility to validate any and all job
+                posts on the platform. Should any suspision arise on a particular job post please contact <b>helpdesk@nsgplesotho.com</b><br/><br/>
+
+                <b>License</b><br/>
+                #SpaneWork operates inline with the context applicable international laws governing commercial & opensource platforms.<br/><br/>
+
+                
+              </p>
+            <hr>
+            <center>
+            #SpaneWork Version 1.0.0
+            <p><a href="#" class="close-popup">
+            <img src="img/close.png" height="50px"><br>
+              Close
+              </a></p>
+            </center>
+          </div>
+        </div>
+        <!--END OF DOCUMENTATION POPUP-->
       </div>
     </div>
   </div>

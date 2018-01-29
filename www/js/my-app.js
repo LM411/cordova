@@ -87,9 +87,14 @@ function createContentPage() {
 
 var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 
+function getPosts(category, categoryNum){
+var postURL = rootURL+ '/posts';
+if (category != 'allPosts'){
+  postURL = postURL+'?categories='+categoryNum;
+}
 $.ajax({
   // type: 'GET',
-  url: rootURL + '/posts',
+  url: postURL,
   // dataType: 'json',
   success: function(data){
       
@@ -116,7 +121,10 @@ $.ajax({
         //Remove T from Date format
         fDate();
         postBookMark();
-        myApp.formStoreData('spane-app-offline-data',data);
+        if (category == 'allPosts'){
+          myApp.formStoreData('spane-app-offline-data',data);
+        }
+        
       });
   },
   complete: function(){
@@ -139,11 +147,12 @@ $.ajax({
             });
          //getOfflineData();
 
-      console.log(error);
-  }
+      //console.log(error);
+    }
 
-});
-
+  });
+  console.log(postURL);
+}
  
   var postid = getUrlParameter('postid');
   if (postid != null){
@@ -361,7 +370,8 @@ getBookmarks();
 //initialize offline data
 getOfflineData();
 
-
+getPosts(jobs, '142');
+console.log(postURL);
 checkConnection();
 function checkConnection() {
     var networkState = navigator.connection.type;
@@ -379,18 +389,18 @@ function checkConnection() {
     alert('Connection type: ' + states[networkState]);
 }
 
-//Categories: 142, 175=jobs, 277, 149,380,
+//Categories: 142=Jobs, 175=scholarships, 277, 149,380,307=Articles, 149=tenders
 function iconCategories(categoryId){
-  if(categoryId=='142'){
+  if(categoryId=='307'){
     $$('#catIcon').append('<i class="f7-icons">bookmark</i>');
   }
-  else if(categoryId=='175'){
+  else if(categoryId=='142'){
     $$('#catIcon').append('<i class="f7-icons">briefcase_fill</i>');
   }
-  else if(categoryId=='277'){
+  else if(categoryId=='149'){
     $$('#catIcon').append('<i class="f7-icons">star_fill</i>');
   }
-  else if(categoryId=='149'){
+  else if(categoryId=='142'){
     $$('#catIcon').append('<i class="f7-icons">persons</i>');
   }
   else if(categoryId=='380'){

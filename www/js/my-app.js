@@ -259,7 +259,7 @@ function getOfflineData(){
   var offlineData = myApp.formGetData('spane-app-offline-data');
   if(offlineData != null){
       $.each(offlineData, function(index, value) {
-            $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+            $$('#contet-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
@@ -370,8 +370,8 @@ getBookmarks();
 //initialize offline data
 getOfflineData();
 
-getPosts(jobs, '142');
-console.log(postURL);
+// getPosts('allPosts', ' ');
+// console.log(postURL);
 checkConnection();
 function checkConnection() {
     var networkState = navigator.connection.type;

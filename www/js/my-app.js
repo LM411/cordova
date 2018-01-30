@@ -9,12 +9,55 @@
   // Add view
   var mainView = myApp.addView('.view-main', {
       // Because we use fixed-through navbar we can enable dynamic navbar
-      dynamicNavbar: true
+      dynamicNavbar: true,
+      domCache: true
   });
-
+ var jobsView = myApp.addView('.view-jobs', {
+      // Because we use fixed-through navbar we can enable dynamic navbar
+      dynamicNavbar: true,
+      domCache: true
+  });
+ $$('#jobs').on('click',function(){
+  router.navigate('jobs.html', animate);
+ })
   var calendarDefault = myApp.calendar({
       input: '#calendar-default',
   });  
+
+//Categories: 142=Jobs, 175=scholarships, 277, 149,380,307=Articles, 149=tenders
+myApp.onPageInit('jobs', function (page) {
+    getPosts('Jobs', '142');
+    console.log("page opened");
+});
+myApp.onPageInit('scholarships', function (page) {
+    getPosts('scholarships', '175');
+});
+myApp.onPageInit('tenders', function (page) {
+    getPosts('tenders', '149');
+});
+myApp.onPageInit('articles', function (page) {
+    getPosts('articles', '307');
+});
+myApp.onPageInit('index', function (page) {
+    getPosts('allPosts', '0');
+    alert("HALAAAAAALAAAAAA");
+});
+
+  // $$(document).on('pageInit','.page[data-page="jobs"]',function(e){
+  //     getPosts('Jobs', '142');
+  // })
+  // $$(document).on('pageInit','.page[data-page="scholarships"]',function(e){
+  //     getPosts('scholarships', '175');
+  // })
+  // $$(document).on('pageInit','.page[data-page="tenders"]',function(e){
+  //     getPosts('tenders', '149');
+  // })
+  // $$(document).on('pageInit','.page[data-page="articles"]',function(e){
+  //     getPosts('articles', '307');
+  // })
+  // $$(document).on('pageInit','.page[data-page="index"]',function(e){
+  //     getPosts('allPosts', '0');
+  // })
 
   function getData(){
   var storedData = myApp.formGetData('userprofile-form');
@@ -153,7 +196,7 @@ $.ajax({
   });
   console.log(postURL);
 }
- 
+getPosts('allPosts', '0');
   var postid = getUrlParameter('postid');
   if (postid != null){
      $.ajax({
@@ -246,7 +289,7 @@ $.ajax({
      console.log(updateVersion);
   },
   error: function(error){
-     console.log(error);
+     //console.log(error);
   }
 
 });
@@ -372,7 +415,7 @@ getOfflineData();
 
 // getPosts('allPosts', ' ');
 // console.log(postURL);
-checkConnection();
+//checkConnection();
 function checkConnection() {
     var networkState = navigator.connection.type;
 

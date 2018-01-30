@@ -1,39 +1,36 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloCordova",
-  "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "name": "spaneapp",
+  "displayName": "SpaneApp",
+  "version": "2.0.0",
+  "description": "A Job seekers tool for searching Jobs, Tenders, Scholarships and Opportunities.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Apache Cordova Team",
+  "author": "spaneapp.com",
   "license": "Apache-2.0",
   "dependencies": {
-<<<<<<< HEAD
-    "cordova-android": "^6.3.0",
-=======
     "cordova-android": "^7.0.0",
     "cordova-inappbrowser": "^1.0.6",
-    "cordova-ios": "^4.5.4",
+    "cordova-plugin-camera": "^4.0.1",
+    "cordova-plugin-inappbrowser": "^1.0.1",
     "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-splashscreen": "^5.0.1",
->>>>>>> 908834349c32ea9931468086ec634ffe2d956053
-    "cordova-plugin-whitelist": "^1.3.3"
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-ios": "^4.5.4"
   },
   "cordova": {
     "plugins": {
-<<<<<<< HEAD
-      "cordova-plugin-whitelist": {}
-=======
       "cordova-plugin-whitelist": {},
-      "cordova-inappbrowser": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-camera": {},
       "cordova-plugin-network-information": {},
+      "cordova-inappbrowser": {},
       "cordova-plugin-splashscreen": {}
->>>>>>> 908834349c32ea9931468086ec634ffe2d956053
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

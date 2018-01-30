@@ -9,12 +9,55 @@
   // Add view
   var mainView = myApp.addView('.view-main', {
       // Because we use fixed-through navbar we can enable dynamic navbar
-      dynamicNavbar: true
+      dynamicNavbar: true,
+      domCache: true
   });
-
+ var jobsView = myApp.addView('.view-jobs', {
+      // Because we use fixed-through navbar we can enable dynamic navbar
+      dynamicNavbar: true,
+      domCache: true
+  });
+ $$('#jobs').on('click',function(){
+  router.navigate('jobs.html', animate);
+ })
   var calendarDefault = myApp.calendar({
       input: '#calendar-default',
   });  
+
+//Categories: 142=Jobs, 175=scholarships, 277, 149,380,307=Articles, 149=tenders
+myApp.onPageInit('jobs', function (page) {
+    getPosts('Jobs', '142');
+    console.log("page opened");
+});
+myApp.onPageInit('scholarships', function (page) {
+    getPosts('scholarships', '175');
+});
+myApp.onPageInit('tenders', function (page) {
+    getPosts('tenders', '149');
+});
+myApp.onPageInit('articles', function (page) {
+    getPosts('articles', '307');
+});
+myApp.onPageInit('index', function (page) {
+    getPosts('allPosts', '0');
+    alert("HALAAAAAALAAAAAA");
+});
+
+  // $$(document).on('pageInit','.page[data-page="jobs"]',function(e){
+  //     getPosts('Jobs', '142');
+  // })
+  // $$(document).on('pageInit','.page[data-page="scholarships"]',function(e){
+  //     getPosts('scholarships', '175');
+  // })
+  // $$(document).on('pageInit','.page[data-page="tenders"]',function(e){
+  //     getPosts('tenders', '149');
+  // })
+  // $$(document).on('pageInit','.page[data-page="articles"]',function(e){
+  //     getPosts('articles', '307');
+  // })
+  // $$(document).on('pageInit','.page[data-page="index"]',function(e){
+  //     getPosts('allPosts', '0');
+  // })
 
   function getData(){
   var storedData = myApp.formGetData('userprofile-form');
@@ -28,6 +71,10 @@
   }
 }
 
+function loadURL(url){
+      navigator.app.loadUrl(url, { openExternal:true });
+      return false;
+    } 
 //Get parameters from URL
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -83,14 +130,19 @@ function createContentPage() {
 
 var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 
+function getPosts(category, categoryNum){
+var postURL = rootURL+ '/posts';
+if (category != 'allPosts'){
+  postURL = postURL+'?categories='+categoryNum;
+}
 $.ajax({
   // type: 'GET',
-  url: rootURL + '/posts',
+  url: postURL,
   // dataType: 'json',
   success: function(data){
       
       $.each(data, function(index, value) {
-        $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+        $$('#content-block-main').empty().append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
@@ -104,22 +156,26 @@ $.ajax({
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-            '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+            '<a  href="#" id="post-bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
             '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);
         //console.log(value.id);
         //Remove T from Date format
         fDate();
-        myApp.formStoreData('spane-app-offline-data',data);
+        postBookMark();
+        if (category == 'allPosts'){
+          myApp.formStoreData('spane-app-offline-data',data);
+        }
+        
       });
   },
   complete: function(){
         $('#loader-image').hide();
       },
   error: function(error){
-          $$('#content-block-main').append('<div class="item-content">' + 
-              '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
+          // $$('#content-block-main').append('<div class="item-content">' + 
+          //     '<div class="item-title"><div class="item-media"></div><center><img style="height:350px" src="img/error.gif"/><br/><a class="button button-raised button-fill color-teal item-link external" style="width:50%;" onClick="location.reload()">No Internet Press to Refresh</a></center></div>');
 
             myApp.addNotification({
             title: 'Network Problem',
@@ -134,12 +190,13 @@ $.ajax({
             });
          //getOfflineData();
 
-      console.log(error);
-  }
+      //console.log(error);
+    }
 
-});
-
- 
+  });
+  console.log(postURL);
+}
+getPosts('allPosts', '0');
   var postid = getUrlParameter('postid');
   if (postid != null){
      $.ajax({
@@ -232,7 +289,7 @@ $.ajax({
      console.log(updateVersion);
   },
   error: function(error){
-     console.log(error);
+     //console.log(error);
   }
 
 });
@@ -245,7 +302,7 @@ function getOfflineData(){
   var offlineData = myApp.formGetData('spane-app-offline-data');
   if(offlineData != null){
       $.each(offlineData, function(index, value) {
-            $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+            $$('#contet-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
@@ -259,12 +316,13 @@ function getOfflineData(){
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                '<a  href="bookmarks.html?bookmarkid='+value.id+'" id="bookmark-modal" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+                '<a  href="#" id="post-bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
                 '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
         fDate();
         $('#loader-image').hide();
+        postBookMark();
         });
         // console.log(bookmarks);
     }
@@ -289,11 +347,14 @@ function getBookmarks(){
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                // '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal">Bookmark</a>'+
+                '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal" data-index="'+bookmarks.indexOf(value)+'">Remove</a>'+
                 '<a class="button item-link external" id="bk-content">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
         fDate();
+        removeBookmarks(bookmarks);
+        $$('#bk-content').click(function(){
+            $('#more-content').hide();
         });
         // console.log(bookmarks);
 
@@ -301,17 +362,19 @@ function getBookmarks(){
      //     $('#more-content').hide();
       //  console.log('Clicked me');
         
-      // });
+       });
     }
 }
 
 //Global Variables Used
-var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
+//var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 //Bookmarks
-var bookID = getUrlParameter('bookmarkid');
+
 function postBookMark(){
-  // $$('.bookmark-modal').click(function () {
-    if (bookID != undefined){
+  var bookID = $('#post-bookmark-modal').attr('data-bookmark');
+   $$('#post-bookmark-modal').click(function () {
+    //console.log(rootURL + '/posts/'+bookID);
+      if (bookID != undefined){
              $.ajax({
               // type: 'GET',
               url: rootURL + '/posts/'+bookID,
@@ -328,24 +391,12 @@ function postBookMark(){
                   var arrBookmarks = storedBookmarks;
                   //console.log(bdata);
                   arrBookmarks.push(bdata);
-            //if(bookmarksData == undefined){
-              //var obj = JSON.parse(bookmarksData);
-              //console.log(bookmarksData.posts = data);
-              
-              myApp.formStoreData('spane-app-dev-Bookmarks',arrBookmarks);
-             //}
-             //  else{
-              // // //jsonB = JSON.stringify(JSON.stringify(data));
-              // $.extend(bookmarksData.posts, bdata);
-              // // //jsonB = JSON.stringify(bookmarksData);
-              // // console.log('Appendiiiiiiiiiiiiiiiinnnnnnnnngggggggg');
-              // myApp.formStoreData('spane-app-dev-Bookmarks',bookmarksData);
-             //  }
+                  myApp.formStoreData('spane-app-dev-Bookmarks',arrBookmarks);
                }
-              
+               alert('Post bookmarked, check Bookmarks to see your Post');
               },
               complete: function(){
-                // $('#loader-spinner').hide();
+                $('#loader-spinner').hide();
               },
               error: function(error){
                   $$('.post-content-block').append('<div class="item-content">' + 
@@ -353,9 +404,8 @@ function postBookMark(){
               console.log(error);
               }
           });
-    };
-    // alert('Post bookmarked');
-  // });
+    }
+  });
       
 }
 //initialize bookmarks
@@ -363,5 +413,56 @@ getBookmarks();
 //initialize offline data
 getOfflineData();
 
-//$$('a').addClass('external');
+// getPosts('allPosts', ' ');
+// console.log(postURL);
+//checkConnection();
+function checkConnection() {
+    var networkState = navigator.connection.type;
 
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
+}
+
+//Categories: 142=Jobs, 175=scholarships, 277, 149,380,307=Articles, 149=tenders
+function iconCategories(categoryId){
+  if(categoryId=='307'){
+    $$('#catIcon').append('<i class="f7-icons">bookmark</i>');
+  }
+  else if(categoryId=='142'){
+    $$('#catIcon').append('<i class="f7-icons">briefcase_fill</i>');
+  }
+  else if(categoryId=='149'){
+    $$('#catIcon').append('<i class="f7-icons">star_fill</i>');
+  }
+  else if(categoryId=='142'){
+    $$('#catIcon').append('<i class="f7-icons">persons</i>');
+  }
+  else if(categoryId=='380'){
+    $$('#catIcon').append('<i class="f7-icons">graph_square_fill</i>');
+  }
+}
+
+//Remove Bookmarks
+function removeBookmarks(offlineData, value){
+    $('#bookmark-modal').click(function(){
+      //console.log('clicked');
+      var indexData = $$(this).attr('data-index');
+               //var storedBookmarks = myApp.formGetData('spane-app-dev-Bookmarks');
+               offlineData.splice(indexData,1);
+               //console.log(indexData);
+              
+              myApp.formStoreData('spane-app-dev-Bookmarks',offlineData);
+              alert('Your Post has been Removed in Bookmarks');
+              location.reload(true);
+    });
+         
+}

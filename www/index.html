@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com;style-src * 'unsafe-inline' 'self' data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;img-src * data: 'unsafe-inline' 'self' content:;fmedia-src mediastream;">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -12,7 +11,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="theme-color" content="#2196f3">
   <title>Spane | Work</title>
-
   <link rel="stylesheet" href="css/my-app.css">
   <link rel="stylesheet" href="../dist/css/framework7.min.css">
   <link rel="stylesheet" href="css/framework7.material.colors.css">
@@ -20,20 +18,17 @@
   <!--Stylesheet import-->
   <link rel="stylesheet" href="css/material-icons.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
-  
-  
-
-
   <link rel="icon" href="img/icon.png">
-
   <link rel="manifest" href="css/manifest.json">
-  <script src="js/jquery.min.js"></script>
+  <!-- <script src="js/jquery.min.js"></script> -->
 </head>
 <body class="theme-teal">
   <div id="app">
     <div class="statusbar"></div>
     <!--SLIDER MENU-->
+    <div class="views">
     <div class="panel panel-right panel-cover ">
+    <div class="view view-right">
       <div class="page">
         <div class="page-content">
           <div class="block-title">Spane Category Listing</div>
@@ -44,7 +39,7 @@
           <div class="list">
             <ul>
               <li>
-                <a href="jobs.html" class="item-link item-content external">
+                <a href="#jobs" class="item-link link item-content" id="#jobs">
                   <div class="item-media"><i class="material-icons">insert_drive_file</i></div>
                   <div class="item-inner">
                     <div class="item-title">Jobs</div>
@@ -53,7 +48,7 @@
                 </a>
               </li>
               <li>
-                <a href="articles.html" class="item-link item-content external">
+                <a href="articles.html" class="item-link link item-content">
                   <div class="item-media"><i class="material-icons">view_headline</i></div>
                   <div class="item-inner">
                     <div class="item-title">Articles</div>
@@ -62,7 +57,7 @@
                 </a>
               </li>
               <li>
-                <a href="scholarships.html" class="item-link item-content external">
+                <a href="scholarships.html" class="item-link link item-content">
                   <div class="item-media"><i class="material-icons">folder_open</i></div>
                   <div class="item-inner">
                     <div class="item-title">Scholarships</div>
@@ -71,7 +66,7 @@
                 </a>
               </li>
               <li>
-                <a href="tenders.html" class="item-link item-content external">
+                <a href="tenders.html" class="item-link link item-content">
                   <div class="item-media"><i class="material-icons">indeterminate_check_box</i></div>
                   <div class="item-inner">
                     <div class="item-title">Tenders</div>
@@ -97,6 +92,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
     <!--END OF SLIDER MENU-->
     <div class="view view-main view-init ios-edges" data-url="/">
@@ -229,6 +225,10 @@
           </div>
         </div>
         <!--END OF DOCUMENTATION POPUP-->
+      </div>
+      </div>
+      <div class="view view-jobs view-init ios-edges" data-url="/jobs.html">
+        
       </div>
     </div>
   </div>

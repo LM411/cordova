@@ -143,7 +143,7 @@ $.ajax({
       $.each(data, function(index, value) {
         $$('#content-block-main').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
@@ -156,7 +156,7 @@ $.ajax({
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
             '<a  href="#" id="post-bookmark-modal" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
-            '<a  href="posts.html?postid='+value.id+'" class="button item-link external">View</a></div>' +
+            '<a  href="posts.html?postid='+value.id+'" data-popup=".popup-doc" class="button open-popup">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);
         //console.log(value.id);
@@ -205,7 +205,7 @@ getPosts('allPosts', '0');
       success: function(data){
         $$('.post-content-block').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
               '<div class="ks-facebook-date">'+data.date+'</div>' +
             '</div>' +
@@ -303,7 +303,7 @@ function getOfflineData(){
       $.each(offlineData, function(index, value) {
             $$('#content-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><img src="img/selibeng.png" width="34" height="34"/><img src="img/lescass.png" style="margin-right:5px;" width="34" height="34"/></div>' +
+              '<div class="ks-facebook-avatar"><i id="catIcon" class="f7-icons" style="height:34px;width:34px;">bookmark</i></div>' +
               '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
                 '</div>' +

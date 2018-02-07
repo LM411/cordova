@@ -2391,7 +2391,8 @@ html:not(.watch-active-state) .speed-dial-buttons a.theme-cyan:active,
   color: #fff;
 }
 .theme-teal .button:not(.button-fill) {
-  color: #006696;
+  color: 
+#008080;
 }
 .theme-teal .navbar .button:not(.button-fill),
 .theme-teal.navbar .button:not(.button-fill),
@@ -2402,7 +2403,8 @@ html:not(.watch-active-state) .speed-dial-buttons a.theme-cyan:active,
   color: #fff;
 }
 .theme-teal .button.button-fill {
-  background: #006696;
+  background: 
+#008080;
   color: #fff;
 }
 html:not(.watch-active-state) .theme-teal .button.button-fill:active,
@@ -2415,7 +2417,8 @@ html:not(.watch-active-state) .theme-teal .button.button-fill:active,
 }
 .progressbar.theme-teal span,
 .theme-teal .progressbar span {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .progressbar-infinite.theme-teal,
 .theme-teal .progressbar-infinite {
@@ -2425,11 +2428,13 @@ html:not(.watch-active-state) .theme-teal .button.button-fill:active,
 .theme-teal .progressbar-infinite:after,
 .progressbar-infinite.theme-teal:before,
 .theme-teal .progressbar-infinite:before {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .color-teal i.icon,
 i.icon.color-teal {
-  color: #006696;
+  color: 
+#008080;
 }
 i.icon-next.color-teal,
 i.icon-next.theme-teal {
@@ -2453,7 +2458,8 @@ i.icon-bars.theme-teal {
 }
 .theme-teal a,
 .theme-teal .card a {
-  color: #006696;
+  color: 
+#008080;
 }
 .theme-teal .navbar,
 .navbar.theme-teal,
@@ -2463,7 +2469,8 @@ i.icon-bars.theme-teal {
 .subnavbar.theme-teal,
 .theme-teal .searchbar,
 .searchbar.theme-teal {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .label-switch input[type="checkbox"]:checked + .checkbox,
 .label-switch.theme-teal input[type="checkbox"]:checked + .checkbox {
@@ -2471,7 +2478,8 @@ i.icon-bars.theme-teal {
 }
 .theme-teal .label-switch input[type="checkbox"]:checked + .checkbox:after,
 .label-switch.theme-teal input[type="checkbox"]:checked + .checkbox:after {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal label.label-checkbox i.icon-form-checkbox:after,
 label.label-checkbox.theme-teal i.icon-form-checkbox:after {
@@ -2489,12 +2497,15 @@ label.label-checkbox.theme-teal input[type="radio"]:checked ~ .item-after i.icon
 label.label-checkbox.theme-teal input[type="checkbox"]:checked ~ .item-inner i.icon-form-checkbox,
 .theme-teal label.label-checkbox input[type="radio"]:checked ~ .item-inner i.icon-form-checkbox,
 label.label-checkbox.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-form-checkbox {
-  border-color: #006696;
-  background-color: #006696;
+  border-color: 
+#008080;
+  background-color: 
+#008080;
 }
 .theme-teal label.label-radio i.icon-form-radio:after,
 label.label-radio.theme-teal i.icon-form-radio:after {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal label.label-radio input[type="checkbox"]:checked + .item-media i.icon-form-radio,
 label.label-radio.theme-teal input[type="checkbox"]:checked + .item-media i.icon-form-radio,
@@ -2508,7 +2519,8 @@ label.label-radio.theme-teal input[type="radio"]:checked ~ .item-after i.icon-fo
 label.label-radio.theme-teal input[type="checkbox"]:checked ~ .item-inner i.icon-form-radio,
 .theme-teal label.label-radio input[type="radio"]:checked ~ .item-inner i.icon-form-radio,
 label.label-radio.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-form-radio {
-  border-color: #006696;
+  border-color: 
+#008080;
 }
 .theme-teal label.label-radio input[type="checkbox"]:checked + .item-media i.icon-form-radio:after,
 label.label-radio.theme-teal input[type="checkbox"]:checked + .item-media i.icon-form-radio:after,
@@ -2522,20 +2534,25 @@ label.label-radio.theme-teal input[type="radio"]:checked ~ .item-after i.icon-fo
 label.label-radio.theme-teal input[type="checkbox"]:checked ~ .item-inner i.icon-form-radio:after,
 .theme-teal label.label-radio input[type="radio"]:checked ~ .item-inner i.icon-form-radio:after,
 label.label-radio.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-form-radio:after {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .form-checkbox input[type="checkbox"]:checked ~ i,
 .form-checkbox.theme-teal input[type="checkbox"]:checked ~ i {
-  border-color: #006696;
-  background-color: #006696;
+  border-color: 
+#008080;
+  background-color: 
+#008080;
 }
 .theme-teal .form-radio input[type="radio"]:checked ~ i,
 .form-radio.theme-teal input[type="radio"]:checked ~ i {
-  border-color: #006696;
+  border-color: 
+#008080;
 }
 .theme-teal .form-radio input[type="radio"]:checked ~ i:after,
 .form-radio.theme-teal input[type="radio"]:checked ~ i:after {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .form-checkbox .ripple-wave,
 .theme-teal .form-radio .ripple-wave {
@@ -2543,37 +2560,46 @@ label.label-radio.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-fo
 }
 .theme-teal .focus-state .label,
 .theme-teal .focus-state .floating-label {
-  color: #006696;
+  color: 
+#008080;
 }
 .theme-teal .item-input-field.focus-state:after,
 .theme-teal .input-field.focus-state:after,
 .theme-teal .item-input-field.not-empty-state:after,
 .theme-teal .input-field.not-empty-state:after {
-  background: #006696;
+  background: 
+#008080;
 }
 .theme-teal .picker-calendar-day.picker-calendar-day-today span {
-  color: #006696;
+  color: 
+#008080;
 }
 .theme-teal .picker-calendar-day.picker-calendar-day-selected span {
-  background-color: #006696;
+  background-color: 
+#008080;
   color: #fff;
 }
 .theme-teal .picker-calendar-day.picker-calendar-day-has-events span:after {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .picker-header {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .modal-button {
-  color: #006696;
+  color: 
+#008080;
 }
 .theme-teal .timeline-horizontal .timeline-item-date,
 .timeline-horizontal.theme-teal .timeline-item-date {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .timeline-year-title,
 .theme-teal .timeline-month-title {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .statusbar-overlay {
   background-color: #004D40;
@@ -2584,15 +2610,18 @@ label.label-radio.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-fo
 }
 .theme-teal .data-table .data-table-title-selected,
 .data-table.theme-teal .data-table-title-selected {
-  color: #006696;
+  color: 
+#008080;
 }
 .swiper-pagination.color-teal .swiper-pagination-bullet-active,
 .theme-teal .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .swiper-pagination.color-teal .swiper-pagination-progressbar,
 .theme-teal .swiper-pagination .swiper-pagination-progressbar {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .swiper-pagination.swiper-pagination-progress.bg-teal {
   background-color: rgba(0, 150, 136, 0.25);
@@ -2614,7 +2643,8 @@ label.label-radio.theme-teal input[type="radio"]:checked ~ .item-inner i.icon-fo
 .floating-button.theme-teal,
 .speed-dial-buttons a.theme-teal {
   color: #fff;
-  background: #006696;
+  background: 
+#008080;
 }
 html:not(.watch-active-state) .theme-teal .floating-button:active,
 html:not(.watch-active-state) .theme-teal .speed-dial-buttons a:active,
@@ -2634,26 +2664,32 @@ html:not(.watch-active-state) .speed-dial-buttons a.theme-teal:active,
 }
 .theme-teal .range-slider input[type="range"]::-webkit-slider-thumb:before,
 .range-slider.theme-teal input[type="range"]::-webkit-slider-thumb:before {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .range-slider input[type="range"]::-webkit-slider-thumb,
 .range-slider.theme-teal input[type="range"]::-webkit-slider-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .range-slider input[type="range"]::-ms-thumb,
 .range-slider.theme-teal input[type="range"]::-ms-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .range-slider input[type="range"]::-ms-fill-lower,
 .range-slider.theme-teal input[type="range"]::-ms-fill-lower {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .theme-teal .range-slider input[type="range"]::-moz-range-thumb,
 .range-slider.theme-teal input[type="range"]::-moz-range-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .badge.theme-teal {
-  background-color: #006696;
+  background-color: 
+#008080;
   color: #fff;
 }
 .theme-green .button:not(.button-fill) {
@@ -7044,26 +7080,31 @@ html:not(.watch-active-state) .speed-dial-buttons a.bg-cyan:active,
   color: #fff;
 }
 .color-teal {
-  color: #006696;
+  color: 
+#008080;
 }
 .list-block .item-link.list-button.color-teal,
 .list-button.color-teal,
 .list-block .item-link.color-teal,
 .tabbar a.active.color-teal,
 a.color-teal {
-  color: #006696;
+  color: 
+#008080;
 }
 .label-switch input[type="checkbox"]:checked + .checkbox.color-teal,
 .label-switch.color-teal input[type="checkbox"]:checked + .checkbox {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .button.color-teal:not(.button-fill),
 .color-teal.buttons-row .button:not(.button-fill) {
-  color: #006696 !important;
+  color: 
+#008080 !important;
 }
 .button.button-fill.bg-teal,
 .button.button-fill.color-teal {
-  background: #006696 !important;
+  background: 
+#008080 !important;
   color: #fff;
 }
 html:not(.watch-active-state) .button.button-fill.bg-teal:active,
@@ -7078,7 +7119,8 @@ html:not(.watch-active-state) .button.button-fill.color-teal:active,
 }
 .progressbar.color-teal span,
 .progressbar.bg-teal span {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .progressbar-infinite.color-teal,
 .progressbar-infinite.bg-teal {
@@ -7088,27 +7130,32 @@ html:not(.watch-active-state) .button.button-fill.color-teal:active,
 .progressbar-infinite.bg-teal:after,
 .progressbar-infinite.color-teal:before,
 .progressbar-infinite.bg-teal:before {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .color-teal i.icon,
 i.icon.color-teal {
-  color: #006696;
+  color: 
+#008080;
 }
 .preloader.color-teal svg circle,
 .preloader.preloader-teal svg circle {
-  stroke: #006696;
+  stroke: 
+#008080;
 }
 .preloader.color-teal .preloader-inner-gap,
 .preloader.preloader-teal .preloader-inner-gap,
 .preloader.color-teal .preloader-inner-half-circle,
 .preloader.preloader-teal .preloader-inner-half-circle {
-  border-color: #006696;
+  border-color: 
+#008080;
 }
 .bg-teal,
 a.bg-teal,
 .list-block .swipeout-actions-left a.bg-teal,
 .list-block .swipeout-actions-right a.bg-teal {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 html:not(.watch-active-state) .list-block .bg-teal .item-link:active,
 html:not(.watch-active-state) .list-block a.bg-teal .item-link:active,
@@ -7137,7 +7184,8 @@ html:not(.watch-active-state) .list-block .item-link.list-block .swipeout-action
   background: #00897B;
 }
 .border-teal {
-  border-color: #006696;
+  border-color: 
+#008080;
 }
 .list-block .border-teal.item-inner:after,
 .list-block ul.border-teal:after,
@@ -7145,14 +7193,16 @@ html:not(.watch-active-state) .list-block .item-link.list-block .swipeout-action
 .list-block .border-teal.item-inner:before,
 .list-block ul.border-teal:before,
 .border-teal:before {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .floating-button.color-teal,
 .speed-dial-buttons a.color-teal,
 .floating-button.bg-teal,
 .speed-dial-buttons a.bg-teal {
   color: #fff;
-  background: #006696;
+  background: 
+#008080;
 }
 html:not(.watch-active-state) .floating-button.color-teal:active,
 html:not(.watch-active-state) .speed-dial-buttons a.color-teal:active,
@@ -7174,22 +7224,28 @@ html:not(.watch-active-state) .speed-dial-buttons a.bg-teal:active,
   background-color: rgba(0, 150, 136, 0.3);
 }
 .range-slider.color-teal input[type="range"]::-webkit-slider-thumb:before {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .range-slider.color-teal input[type="range"]::-webkit-slider-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .range-slider.color-teal input[type="range"]::-ms-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .range-slider.color-teal input[type="range"]::-ms-fill-lower {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .range-slider.color-teal input[type="range"]::-moz-range-thumb {
-  background-color: #006696;
+  background-color: 
+#008080;
 }
 .badge.color-teal {
-  background-color: #006696;
+  background-color: 
+#008080;
   color: #fff;
 }
 .color-green {

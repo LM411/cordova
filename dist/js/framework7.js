@@ -1,4 +1,4 @@
-/**
+  /**
  * Framework7 2.0.6
  * Full featured mobile HTML framework for building iOS & Android apps
  * http://framework7.io/
@@ -9,6 +9,7 @@
  *
  * Released on: January 9, 2018
  */
+
 
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -28172,3 +28173,5 @@ Framework7$1.use([
 return Framework7$1;
 
 })));
+
+

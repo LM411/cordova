@@ -27,19 +27,23 @@
     <div class="statusbar"></div>
     <!--SLIDER MENU-->
     <div class="views">
-    <div class="panel panel-right panel-cover ">
+    <div class="panel panel-right panel-cover" style="background-color: rgba(0,0,0,0.5);">
     <div class="view view-right">
       <div class="page">
         <div class="page-content">
-          <div class="block-title">Spane Category Listing</div>
+          <div class="navbar">
+            <div class="navbar-inner sliding">
+              <div class="title"></div>
+            </div>
+          </div>
           <div class="block">
-            <p>Dont wanna view all posts, here is the easy way of filtering them.</p>
+            <p>Filtering Opportunities</p>
           </div>
           <!--SLIDER MENU LINKS-->
           <div class="list">
             <ul>
               <li>
-                <a href="#jobs" class="item-link link item-content" id="#jobs">
+                <a href="#jobs" class="item-link link item-content external" id="#jobs">
                   <div class="item-media"><i class="material-icons">insert_drive_file</i></div>
                   <div class="item-inner">
                     <div class="item-title">Jobs</div>
@@ -48,7 +52,7 @@
                 </a>
               </li>
               <li>
-                <a href="articles.html" class="item-link link item-content">
+                <a href="articles.html" class="item-link link item-content external">
                   <div class="item-media"><i class="material-icons">view_headline</i></div>
                   <div class="item-inner">
                     <div class="item-title">Articles</div>
@@ -57,7 +61,7 @@
                 </a>
               </li>
               <li>
-                <a href="scholarships.html" class="item-link link item-content">
+                <a href="scholarships.html" class="item-link link item-content external">
                   <div class="item-media"><i class="material-icons">folder_open</i></div>
                   <div class="item-inner">
                     <div class="item-title">Scholarships</div>
@@ -66,7 +70,7 @@
                 </a>
               </li>
               <li>
-                <a href="tenders.html" class="item-link link item-content">
+                <a href="tenders.html" class="item-link link item-content external">
                   <div class="item-media"><i class="material-icons">indeterminate_check_box</i></div>
                   <div class="item-inner">
                     <div class="item-title">Tenders</div>
@@ -152,6 +156,16 @@
               </div>
               <div id="bookmarks" class="page-content tab" style="margin-top: -2.5%">
                 <div class="block">
+                  <ul>
+                    <li>
+                      <a class="item-content item-link" href="/about/">
+                        <div class="item-media"><i class="icon icon-f7"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">About Framework7</div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
                   <div id="bookmarks-block-main">
                     <!-- Bookmarks Content here -->
                   </div>
@@ -165,7 +179,8 @@
         <!--FLOATING ACTION BUTTON-->
         <style type="text/css">
           #fab a{
-            background-color: #006696;
+            background-color: 
+#008080;
           }
         </style>
         <div id="fab" class="fab fab-right-bottom">
@@ -186,10 +201,36 @@
 
         <!-- Documentation Popup -->
         <div class="popup popup-doc">
-          <div class="content-block">
+          <!--NAVIGATION BAR-->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left sliding">
+                <a href="#" class="link icon-only">
+                  <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
+                </a>
+              </div>
+              <div class="right" >
+                <a href="#" class="link icon-only close-popup" title="Menu">
+                  <i class="icon f7-icons ios-only">close</i>
+                  <i class="icon material-icons md-only">close</i>
+                </a>
+              </div>
+              <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
+                <div class="searchbar-inner">
+                  <div class="searchbar-input-wrap">
+                    <input type="search" placeholder="Search" id="search-input" style="background-color: #fff" />
+                    <i class="searchbar-icon"></i>
+                    <span class="input-clear-button"></span>
+                  </div>
+                  <span class="searchbar-disable-button">Cancel</span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!--END OF NAVIGATION BAR-->
+          <div class="block">
             <h2>#SpaneWork Documentation</h2>
               <hr>
-              <p>
                 <b>Introduction</b><br/>
                 #SpaneWork is a job seeking platform keeping you up-to-date with the latest in local and international jobs. It is an android
                 based platform running on <b>Android 2.3 Gingerbread</b> & above but for better performance <b>Android 4.1 KitKat</b> and above platforms
@@ -207,21 +248,12 @@
                 <b>Terms of Use</b><br/>
                 Please note this is a post viewing platform and not a job application platform. No curriculum vitae will be received by our group
                 and no form of meetings are coordinated or arranged by our group. It is our users responsibility to validate any and all job
-                posts on the platform. Should any suspision arise on a particular job post please contact <b>helpdesk@nsgplesotho.com</b><br/><br/>
+                posts on the platform. Should any suspision arise on a particular job post please contact <b>helpdesk@spaneapp.com</b><br/><br/>
 
                 <b>License</b><br/>
-                #SpaneWork operates inline with the context applicable international laws governing commercial & opensource platforms.<br/><br/>
-
-                
-              </p>
-            <hr>
-            <center>
-            #SpaneWork Version 1.0.0
-            <p><a href="#" class="close-popup">
-            <img src="img/close.png" height="50px"><br>
-              Close
-              </a></p>
-            </center>
+                #SpaneWork operates inline with the context applicable international laws governing commercial & opensource platforms.<br/>
+            </div>
+            
           </div>
         </div>
         <!--END OF DOCUMENTATION POPUP-->

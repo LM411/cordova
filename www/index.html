@@ -1,133 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="theme-color" content="#2196f3">
-  <title>Spane | Work</title>
-  <link rel="stylesheet" href="css/my-app.css">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#008e96">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+  <title>SpaneApp</title>
   <link rel="stylesheet" href="../dist/css/framework7.min.css">
-  <link rel="stylesheet" href="css/framework7.material.colors.css">
+  <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/kitchen-sink.css">
-  <!--Stylesheet import-->
-  <link rel="stylesheet" href="css/material-icons.css">
-  <link rel="stylesheet" href="css/framework7-icons.css">
-  <link rel="icon" href="img/icon.png">
-  <link rel="manifest" href="css/manifest.json">
-  <!-- <script src="js/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="css/my-app.css">
+  <link rel="apple-touch-icon" href="img/icon_circle.png">
+  <link rel="icon" href="img/icon_circle.png">
 </head>
-<body class="theme-teal">
+
+<body>
   <div id="app">
     <div class="statusbar"></div>
-    <!--SLIDER MENU-->
-    <div class="views">
-    <div class="panel panel-right panel-cover" style="background-color: rgba(0,0,0,0.5);">
-    <div class="view view-right">
-      <div class="page">
-        <div class="page-content">
+    <div class="panel panel-right panel-cover">
+        <div class="page">
           <div class="navbar">
             <div class="navbar-inner sliding">
               <div class="title"></div>
             </div>
           </div>
-          <div class="block">
-            <p>Filtering Opportunities</p>
-          </div>
-          <!--SLIDER MENU LINKS-->
-          <div class="list">
-            <ul>
-              <li>
-                <a href="#jobs" class="item-link link item-content external" id="#jobs">
-                  <div class="item-media"><i class="material-icons">insert_drive_file</i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Jobs</div>
-                    <div class="item-after">Explore</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="articles.html" class="item-link link item-content external">
-                  <div class="item-media"><i class="material-icons">view_headline</i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Articles</div>
-                    <div class="item-after">Read</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="scholarships.html" class="item-link link item-content external">
-                  <div class="item-media"><i class="material-icons">folder_open</i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Scholarships</div>
-                    <div class="item-after">View</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="tenders.html" class="item-link link item-content external">
-                  <div class="item-media"><i class="material-icons">indeterminate_check_box</i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Tenders</div>
-                    <div class="item-after">View</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <div class="item-content">
-                  <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Load Categories</div>
-                    <div class="item-after">
-                      <label class="toggle toggle-init">
-                        <input type="checkbox"/>
-                        <span class="toggle-icon"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div class="page-content">
+            <div class="block">
+              <p>Filter select Spane opportunities.</p>
+            </div>
+            <div class="block-title">Categories</div>
+            <div class="list links-list">
+              <ul>
+                <li><a class="item-content item-link" href="/jobs/"><i class="icon f7-icons">briefcase_fill</i>Jobs Opportunities</a></li>
+                <li><a href="/Scholarships/"><i class="icon f7-icons">persons_fill</i>Scholarships</a></li>
+                <li><a href="/tenders/"><i class="icon f7-icons">box_fill</i>Tender information</a></li>
+                <li><a href="/blogs/"><i class="icon f7-icons">social_rss_fill</i>Opportunities Blog</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
     </div>
-    </div>
-    <!--END OF SLIDER MENU-->
     <div class="view view-main view-init ios-edges" data-url="/">
       <div class="page">
-        <!--NAVIGATION BAR-->
         <div class="navbar">
-          <div class="navbar-inner">
-            <div class="left sliding">
-              <a href="#" class="link icon-only">
-                <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
-              </a>
-            </div>
+          <div class="left sliding">
+            <a href="#" class="link icon-only">
+              <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
+            </a>
+          </div>
+          <div class="navbar-inner sliding">
             <div class="right">
-              <a class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo" title="Search">
+              <a class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
                 <i class="icon f7-icons ios-only">search_strong</i>
                 <i class="icon material-icons md-only">search</i>
               </a>
-              <a href="#" class="link" data-panel="right" title="Refresh">
+              <a href="#" class="link icon-only panel-open" onClick="location.reload()">
                 <i class="icon f7-icons ios-only">refresh</i>
                 <i class="icon material-icons md-only">refresh</i>
               </a>
-
-              <a href="#" class="link icon-only panel-open" data-panel="right" title="Menu">
+              <a href="#" class="link icon-only panel-open" data-panel="right">
                 <i class="icon f7-icons ios-only">menu</i>
                 <i class="icon material-icons md-only">menu</i>
               </a>
             </div>
+
             <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
               <div class="searchbar-inner">
                 <div class="searchbar-input-wrap">
-                  <input type="search" placeholder="Search" id="search-input" style="background-color: #fff" />
+                  <input type="search" placeholder="Search" id="search-input"/>
                   <i class="searchbar-icon"></i>
                   <span class="input-clear-button"></span>
                 </div>
@@ -136,144 +78,139 @@
             </form>
           </div>
         </div>
-        <!--END OF NAVIGATION BAR-->
+       
         <div class="page-content">
-
-          <!--TABBED MENU-->
           <div class="toolbar tabbar">
             <div class="toolbar-inner">
-              <a href="#opportunities" class="tab-link tab-link-active">Opportunities</a>
-              <a href="#bookmarks" class="tab-link">Bookmarks</a>
+              <a href="#tab-1" class="tab-link tab-link-active">Opportunities</a>
+              <a href="#tab-2" class="tab-link tab-2">Bookmarks</a>
             </div>
           </div>
 
           <div class="tabs-swipeable-wrap">
             <div class="tabs">
-              <div id="opportunities" class="page-content tab tab-active">
-                  <div id="content-block-main" style="margin-top: -2.5%">
-                    <!-- Content Here -->
-                  </div>
+              <div id="tab-1" class="page-content tab tab-active">
+                <div id="content-block-main" style="margin-top: -2.5%">
+                  <!-- Content Here -->
+                  <div id="loader-image">
+                  <img src="img/lg.curved-bar-spinner.gif" height="60%" width="60%">
+                </div>
+                </div>
               </div>
-              <div id="bookmarks" class="page-content tab" style="margin-top: -2.5%">
+              <div id="tab-2" class="page-content tab">
+                <div class="block" id="bookmarks-block-main" style="margin-top: -2.5%">
+                </div>
+              </div>
+              <div id="tab-3" class="page-content tab">
                 <div class="block">
-                  <ul>
-                    <li>
-                      <a class="item-content item-link" href="/about/">
-                        <div class="item-media"><i class="icon icon-f7"></i></div>
-                        <div class="item-inner">
-                          <div class="item-title">About Framework7</div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                  <div id="bookmarks-block-main">
-                    <!-- Bookmarks Content here -->
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!--END OF TABBED MENU-->
-        </div>
 
-        <!--FLOATING ACTION BUTTON-->
-        <style type="text/css">
-          #fab a{
-            background-color: 
-#008080;
-          }
-        </style>
-        <div id="fab" class="fab fab-right-bottom">
-          <a href="#">
-            <i class="icon f7-icons ios-only">add</i>
-            <i class="icon f7-icons ios-only">close</i>
-            <i class="icon material-icons md-only">add</i>
-            <i class="icon material-icons md-only">close</i>
-          </a>
-          <div class="fab-buttons fab-buttons-top">
-            <p class="buttons-row"><a href="bookmarks.html" class="item-link external"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
+          <!--FLOATING ACTION BUTTON-->
+          <div id="fab" class="fab fab-right-bottom">
+            <a href="#">
+              <i class="icon f7-icons ios-only">add</i>
+              <i class="icon f7-icons ios-only">close</i>
+              <i class="icon material-icons md-only">add</i>
+              <i class="icon material-icons md-only">close</i>
+            </a>
+            <div class="fab-buttons fab-buttons-top">
+              <p class="buttons-row"><a href="bookmarks.html" class="item-link external"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
 
-             <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
-             <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="open-popup"><i class="icon material-icons">help</i></a></p>
-          </div>
-        </div>
-        <!--END OF FLOATING ACTION-->
+               <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
 
-        <!-- Documentation Popup -->
-        <div class="popup popup-doc">
-          <!--NAVIGATION BAR-->
-          <div class="navbar">
-            <div class="navbar-inner">
-              <div class="left sliding">
-                <a href="#" class="link icon-only">
-                  <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
-                </a>
-              </div>
-              <div class="right" >
-                <a href="#" class="link icon-only close-popup" title="Menu">
-                  <i class="icon f7-icons ios-only">close</i>
-                  <i class="icon material-icons md-only">close</i>
-                </a>
-              </div>
-              <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
-                <div class="searchbar-inner">
-                  <div class="searchbar-input-wrap">
-                    <input type="search" placeholder="Search" id="search-input" style="background-color: #fff" />
-                    <i class="searchbar-icon"></i>
-                    <span class="input-clear-button"></span>
-                  </div>
-                  <span class="searchbar-disable-button">Cancel</span>
-                </div>
-              </form>
+               <p class="buttons-row" id="demo-calendar-modal"><a href="#" class="item-link"><i class="icon material-icons">today</i></a></p>
+
+               <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="popup-open"><i class="icon material-icons">help</i></a></p>
             </div>
           </div>
-          <!--END OF NAVIGATION BAR-->
-          <div class="block">
-            <h2>#SpaneWork Documentation</h2>
-              <hr>
-                <b>Introduction</b><br/>
-                #SpaneWork is a job seeking platform keeping you up-to-date with the latest in local and international jobs. It is an android
-                based platform running on <b>Android 2.3 Gingerbread</b> & above but for better performance <b>Android 4.1 KitKat</b> and above platforms
-                are advised.<br/><br/>
-                
-                <b>Features</b><br/>
-                1. View posts<br/>
-                2. View posts details<br/>
-                3. Share posts<br/>
-                4. Share app link<br/>
-                5. View calendar<br/>
-                6. App documentation<br/><br/>
-                
-               
-                <b>Terms of Use</b><br/>
-                Please note this is a post viewing platform and not a job application platform. No curriculum vitae will be received by our group
-                and no form of meetings are coordinated or arranged by our group. It is our users responsibility to validate any and all job
-                posts on the platform. Should any suspision arise on a particular job post please contact <b>helpdesk@spaneapp.com</b><br/><br/>
+          <!--END OF FLOATING ACTION-->
 
-                <b>License</b><br/>
-                #SpaneWork operates inline with the context applicable international laws governing commercial & opensource platforms.<br/>
+          <!-- Documentation Popup -->
+          <div class="popup popup-doc">
+            <!--NAVIGATION BAR-->
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left sliding">
+                  <a href="#" class="link icon-only">
+                    <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
+                  </a>
+                </div>
+                <div class="right" >
+                  <a href="#" class="link icon-only popup-close" title="Menu">
+                    <i class="icon f7-icons ios-only">close</i>
+                    <i class="icon material-icons md-only">close</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!--END OF NAVIGATION BAR-->
+            <div class="block">
+              <b>Introduction</b><br/>
+              #SpaneWork is a job seeking platform keeping you up-to-date with the latest in local and international jobs. It is an android
+              based platform running on <b>Android 2.3 Gingerbread</b> & above but for better performance <b>Android 4.1 KitKat</b> and above platforms
+              are advised.<br/><br/>
+              
+              <b>Features</b><br/>
+              1. View posts<br/>
+              2. View posts details<br/>
+              3. Share posts<br/>
+              4. Share app link<br/>
+              5. View calendar<br/>
+              6. App documentation<br/><br/>
+              
+             
+              <b>Terms of Use</b><br/>
+              Please note this is a post viewing platform and not a job application platform. No curriculum vitae will be received by our group
+              and no form of meetings are coordinated or arranged by our group. It is our users responsibility to validate any and all job
+              posts on the platform. Should any suspision arise on a particular job post please contact <b>helpdesk@spaneapp.com</b><br/><br/>
+
+              <b>License</b><br/>
+              #SpaneWork operates inline with the context applicable international laws governing commercial & opensource platforms.<br/>
             </div>
             
           </div>
+          <!-- Post popUp -->
+          <div class="popup popup-post">
+            <div class="page">
+              <!--NAVIGATION BAR-->
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left">
+                    <a href="#" class="link icon-only">
+                      <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
+                    </a>
+                  </div>
+                  <div class="right" >
+                    <a href="#" class="link icon-only popup-close" title="Menu">
+                      <i class="icon f7-icons ios-only">close</i>
+                      <i class="icon material-icons md-only">close</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!--END OF NAVIGATION BAR-->
+              <div class="page-content">
+              
+              <div id="loader-spinner"><center><img src="img/spinner_posts.gif" style="display: block;margin:30% auto;" height="60%" width="60%"></center></div>
+              <div class="block" id="block-popup-content">
+                <!-- Post popup content here -->
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          </div>
         </div>
-        <!--END OF DOCUMENTATION POPUP-->
-      </div>
-      </div>
-      <div class="view view-jobs view-init ios-edges" data-url="/jobs.html">
-        
       </div>
     </div>
   </div>
+  <script src="../dist/js/jquery.js"></script>
   <script src="../dist/js/framework7.min.js"></script>
   <script src="js/routes.js"></script>
+  <script src="cordova.js"></script>
   <script src="js/app.js"></script>
-
-  <script type="text/javascript" src="js/framework7.js"></script>
-  <script type="text/javascript" src="js/kitchen-sink.js"></script>
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <!-- Path to your app js-->
-  <script type="text/javascript" src="js/my-app.js"></script>
-  <script type="text/javascript" src="cordova.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

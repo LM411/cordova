@@ -57,7 +57,7 @@ export default {
       closeByOutsideClick: true,
       scrollToInput: true,
       header: false,
-      headerPlaceholder: 'Select date',
+      headerPlaceholder: 'Spane Calendar',
       footer: false,
       toolbar: true,
       toolbarCloseText: 'Done',

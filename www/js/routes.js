@@ -7,9 +7,24 @@ var routes = [
   },
   // About page
   {
-    path: '/about/',
-    url: './pages/about.html?postid=117242',
-    name: 'about',
+    path: '/jobs/',
+    url: './pages/jobs.html',
+    name: 'jobs',
+  },
+  {
+    path: '/scholarships/',
+    url: './pages/scholarships.html',
+    name: 'scholarships',
+  },
+  {
+    path: '/tenders/',
+    url: './pages/tenders.html',
+    name: 'tenders',
+  },
+  {
+    path: '/blogs/',
+    url: './pages/blogs.html',
+    name: 'blogs',
   },
   // Right Panel pages
   {

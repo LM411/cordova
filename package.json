@@ -11,6 +11,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^7.0.0",
+    "framework7": "^2.0.7",
     "cordova-inappbrowser": "^1.0.6",
     "cordova-plugin-camera": "^4.0.1",
     "cordova-plugin-inappbrowser": "^1.0.1",

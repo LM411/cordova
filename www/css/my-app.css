@@ -16,3 +16,9 @@
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
+.dialog-title .dialog-text{
+  text-align: center;
+}
+.greenl{
+  color:green;
+}

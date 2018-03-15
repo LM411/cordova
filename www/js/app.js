@@ -31,12 +31,41 @@ var app = new Framework7({
   },
 });
 
+//Other pages
+$$(document).on('page:init', '.page[data-name="scholarships"]', function (e) {
+  getPosts('scholarships', '175');
+  //alert("Page Loaded: Scholarships");
+})
+$$(document).on('page:init','.page[data-name="jobs"]',function(e){
+      getPosts('Jobs', '142');
+})
+$$(document).on('page:init','.page[data-name="tenders"]',function(e){
+      getPosts('tenders', '149');
+})
+$$(document).on('page:init','.page[data-name="blogs"]',function(e){
+      getPosts('blogs', '307');
+})
+// $$(document).on('page:init','.page[data-page="index"]',function(e){
+//       getPosts('allPosts', '0');
+// })
+
+
+//Calendar
 var calendarModal = app.calendar.create({
   inputEl: '#demo-calendar-modal',
   openIn: 'customModal',
   header: true,
   footer: true,
   dateFormat: 'MM dd yyyy',
+  on:{
+    calendarDayClick: function(){
+      var tDate = $$('.calendar-day').attr('data-date');
+      app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+ tDate +'</span>', function (name) {
+        var postTitle = name;
+        setReminder(postTitle, tDate);
+      });
+    }
+  }
 });
 
 function getData(){
@@ -112,20 +141,23 @@ var rootURL = 'https://www.selibeng.com/wp-json/wp/v2';
 
 function getPosts(category, categoryNum){
 var postURL = rootURL+ '/posts';
+var iconCategories_token = 1;
 if (category != 'allPosts'){
   postURL = postURL+'?categories='+categoryNum;
+  console.log(postURL);
 }
+
 $.ajax({
-  // type: 'GET',
+  type: 'GET',
   url: postURL,
   // dataType: 'json',
   success: function(data){
-      $$('#content-block-main').empty();
+      $$('.content-block-main').empty();
       $.each(data, function(index, value) {
-        $$('#content-block-main').append('<div class="card ks-facebook-card">' +
+        $$('.content-block-main').append('<div class="card ks-facebook-card">' + 
           '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
-              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
+              '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
             '<div class="card-content">' + 
@@ -136,24 +168,28 @@ $.ajax({
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-            '<a  href="#" data-bookmark="'+value.id+'" class="button item-link external bookmark-modal post-bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+            '<a  href="#" data-bookmark="'+value.id+'" class="button item-link external post-bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
             '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" class="button popup-open view-post-btn">View</a></div>' +
           '<div class="item-inner"><div class="item-title"></div>');
        //console.log(parseObject.profession);
         //console.log(value.id);
         //Remove T from Date format
+        
         fDate();
         singlePosts();
         postBookMark();
+        console.log(postURL);
+        console.log(data);
         if (category == 'allPosts'){
           // app.formStoreData('spane-app-offline-data',data);
           app.form.storeFormData('spane-app-offline-data',data);
         }
-        
+        iconCategories(value.categories,value.id);
+        titleCategories(value.categories,value.id);
       });
   },
   complete: function(){
-        $('#loader-image').hide();
+        $('#loader-spinner').hide();
       },
   error: function(error){
           // $$('#content-block-main').append('<div class="item-content">' + 
@@ -173,6 +209,7 @@ $.ajax({
     }
 
   });
+
   //console.log(postURL);
 }
 getPosts('allPosts', '0');
@@ -284,8 +321,8 @@ function getOfflineData(){
       $.each(offlineData, function(index, value) {
             $$('#content-block-main').append('<div class="card ks-facebook-card">' +
              '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
-              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
+              '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
                 '<div class="card-content">' + 
@@ -296,13 +333,16 @@ function getOfflineData(){
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                '<a  href="#"  data-bookmark="'+value.id+'" class="button item-link external bookmark-modal post-bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
-                '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" class="button popup-open view-post-btn">View</a></div>' +
+                '<a  href="#"  data-bookmark="'+value.id+'" class="button item-link external post-bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
+                '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" class="button popup-open view-post-btn" data-index="'+offlineData.indexOf(value)+'">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
+        iconCategories(value.categories,value.id);
+        titleCategories(value.categories,value.id);
         fDate();
-        $('#loader-image').hide();
-        singlePosts();
+        $('#loader-spinner').hide();
+        // singlePosts();
+        getOfflinePost(offlineData);
         postBookMark();
         });
         // console.log(bookmarks);
@@ -317,8 +357,8 @@ function getBookmarks(){
       $.each(bookmarks, function(index, value) {
             $$('#bookmarks-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
-              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
+              '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
                 '<div class="card-content">' + 
@@ -409,7 +449,7 @@ function clearModal(){
 
  $$('.tab-2').on('click', function(){
      getBookmarks();
-     console.log('cliecked me');
+     console.log('They clicked me me');
  });
 
 
@@ -429,22 +469,31 @@ function checkConnection() {
     alert('Connection type: ' + states[networkState]);
 }
 
-//Categories: 142=Jobs, 175=scholarships, 277, 149,380,307=Articles, 149=tenders
-function iconCategories(categoryId){
-  if(categoryId=='307'){
-    $$('#catIcon').append('<i class="f7-icons">bookmark</i>');
+//Categories: 142=Jobs, 175=scholarships, 277=Remote jobs, 149,380=international jobs,655=self employment,307=Articles,782=advice, 149=tenders
+function iconCategories(categoryId,valueId){
+  if(categoryId=='142' || categoryId=='380' || categoryId=='277' || categoryId=='655'){
+    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">briefcase_fill</i>');
+  }else if(categoryId=='175'){
+    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">document_text_fill</i>');
+  }else if(categoryId=='149'){
+    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">box_fill</i>');
+  }else if(categoryId=='307' || categoryId=='782'){
+    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">social_rss_fill</i>');
+  }else{
+    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">bookmark_fill</i>');
   }
-  else if(categoryId=='142'){
-    $$('#catIcon').append('<i class="f7-icons">briefcase_fill</i>');
-  }
-  else if(categoryId=='149'){
-    $$('#catIcon').append('<i class="f7-icons">star_fill</i>');
-  }
-  else if(categoryId=='142'){
-    $$('#catIcon').append('<i class="f7-icons">persons</i>');
-  }
-  else if(categoryId=='380'){
-    $$('#catIcon').append('<i class="f7-icons">graph_square_fill</i>');
+}
+function titleCategories(categoryId,valueId){
+  if(categoryId=='142' || categoryId=='380' || categoryId=='277' || categoryId=='655'){
+    $$('.postType'+valueId).append('Job Information');
+  }else if(categoryId=='175'){
+    $$('.postType'+valueId).append('Scholarships');
+  }else if(categoryId=='149'){
+    $$('.postType'+valueId).append('Tender Information');
+  }else if(categoryId=='307' || categoryId=='782'){
+    $$('.postType'+valueId).append('Blogs & Articles');
+  }else{
+    $$('.postType'+valueId).append('Site Opportunity');
   }
 }
 
@@ -473,24 +522,70 @@ function removeBookmarks(offlineData, value){
          
 }
 
-//Set Calendar reminder
-function setReminder(){
-  $$('.calendar-day').on('click', function(){
-      var remDate = $(this).attr('data-date');
-      console.log(remDate);
-      alert('Calender');
+function getOfflinePost(offlineData){
+    $$('.view-post-btn').off('click').on('click', function(){
+      //console.log('clicked');
+      var indexData = $$(this).attr('data-index');
+               //var storedBookmarks = app.formGetData('spane-app-dev-Bookmarks');
+        var post = offlineData[indexData];
+               //console.log(indexData);
+          $$('#block-popup-content').empty();
+          $$('#block-popup-content').append('<div class="card ks-facebook-card">' +
+          '<div class="card-header">' +
+              '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
+              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-date">'+post.date+'</div>' +
+            '</div>' +
+            '<div class="card-content">' + 
+              '<div class="card-content-inner">' +
+              '<p><h3>'+post.title.rendered+'</h3></p>' +
+               '<p>'+post.content.rendered+'</p>' +
+               '<p class="buttons-row"><a href="'+post.link+'" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><a  href="whatsapp://send?text='+post.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
+                // '<p class="color-gray">Views: '+value.link+'</p>' +
+              '</div>' +
+            '</div>' +
+          '<div class="item-inner"><div class="item-title"></div>');
+        //console.log(value.title);
+        fDate();
+              //location.reload(true);
     });
-  }
-  clearModal();
-  //initialize bookmarks
-  // getBookmarks();
-  //initialize offline data
-getOfflineData();
-// singlePosts();
-// getPosts('allPosts', ' ');
-// console.log(postURL);
-//checkConnection();
-setReminder();
+         
+}
+
+//Set Calendar reminder
+function setReminder(title, date){
+               var bdata = {'title':title,'date':date};
+               var reminders = app.form.getFormData('spane-app-dev-reminders');
+               if(reminders==null){
+                  app.form.storeFormData('spane-app-dev-reminders',[bdata]);
+               }
+               else{
+                  var sReminders = reminders;
+                  sReminders.push(bdata);
+                  app.form.storeFormData('spane-app-dev-reminders',sReminders);
+               }
+}
+// Check if there are any set Calendar Post Reminders
+function checkReminders(){
+  var reminders = app.form.getFormData('spane-app-dev-reminders');
+  if(reminders==null){
+                  var today = new Date();
+                  $.each(reminders, function(index, value) {
+                    //notify a day before
+                      if (reminders.tDate == today.getDate() - 1){
+                        app.notification.create({
+                        title: 'Reminder! Reminder',
+                        closeIcon: true,
+                        closeOnClick: true,
+                        closeButton: true,
+                        text: 'You have post(s) that are due tommorrow, check your bookmarks',
+                        closeTimeout: 3000, 
+                        }).open();
+                      } 
+                  });
+
+   }
+}
 
 //open inapp browser
 function openBrowser(url_link) {
@@ -520,3 +615,15 @@ function openBrowser(url_link) {
       console.log('Browser is closed...')
    }
 }
+
+clearModal();
+  //initialize bookmarks
+  // getBookmarks();
+  //initialize offline data
+getOfflineData();
+// singlePosts();
+// getPosts('allPosts', ' ');
+// console.log(postURL);
+//checkConnection();
+setReminder();
+checkReminders();

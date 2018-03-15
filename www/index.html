@@ -6,9 +6,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#008e96">
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
   <title>SpaneApp</title>
-  <link rel="stylesheet" href="../dist/css/framework7.min.css">
+  <link rel="stylesheet" href="dist/css/framework7.min.css">
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/kitchen-sink.css">
   <link rel="stylesheet" href="css/my-app.css">
@@ -34,7 +34,7 @@
             <div class="list links-list">
               <ul>
                 <li><a class="item-content item-link" href="/jobs/"><i class="icon f7-icons">briefcase_fill</i>Jobs Opportunities</a></li>
-                <li><a href="/Scholarships/"><i class="icon f7-icons">persons_fill</i>Scholarships</a></li>
+                <li><a href="/Scholarships/"><i class="icon f7-icons">document_text_fill</i>Scholarships</a></li>
                 <li><a href="/tenders/"><i class="icon f7-icons">box_fill</i>Tender information</a></li>
                 <li><a href="/blogs/"><i class="icon f7-icons">social_rss_fill</i>Opportunities Blog</a></li>
               </ul>
@@ -65,7 +65,7 @@
                 <i class="icon material-icons md-only">menu</i>
               </a>
             </div>
-
+            <div class="searchbar-backdrop"></div>
             <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
               <div class="searchbar-inner">
                 <div class="searchbar-input-wrap">
@@ -90,11 +90,9 @@
           <div class="tabs-swipeable-wrap">
             <div class="tabs">
               <div id="tab-1" class="page-content tab tab-active">
-                <div id="content-block-main" style="margin-top: -2.5%">
+                <div class="content-block-main" id="content-block-main" style="margin-top: -2.5%">
                   <!-- Content Here -->
-                  <div id="loader-image">
-                  <img src="img/lg.curved-bar-spinner.gif" height="60%" width="60%">
-                </div>
+                  <div id="loader-spinner"><center><img src="img/spinner_posts.gif" style="display: block;margin:30% auto;" height="60%" width="60%"></center></div>
                 </div>
               </div>
               <div id="tab-2" class="page-content tab">
@@ -117,7 +115,7 @@
               <i class="icon material-icons md-only">close</i>
             </a>
             <div class="fab-buttons fab-buttons-top">
-              <p class="buttons-row"><a href="bookmarks.html" class="item-link external"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
+              <p class="buttons-row"><a href="#tab-2" class="tab-link tab-2"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
 
                <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
 
@@ -207,8 +205,8 @@
       </div>
     </div>
   </div>
-  <script src="../dist/js/jquery.js"></script>
-  <script src="../dist/js/framework7.min.js"></script>
+  <script src="dist/js/jquery.js"></script>
+  <script src="dist/js/framework7.min.js"></script>
   <script src="js/routes.js"></script>
   <script src="cordova.js"></script>
   <script src="js/app.js"></script>

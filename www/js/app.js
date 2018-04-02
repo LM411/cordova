@@ -56,13 +56,16 @@ var calendarModal = app.calendar.create({
   openIn: 'customModal',
   header: true,
   footer: true,
-  dateFormat: 'MM dd yyyy',
+  dateFormat: 'm/d/yyyy',
   on:{
     calendarDayClick: function(){
-      var tDate = $$('.calendar-day').attr('data-date');
-      app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+ tDate +'</span>', function (name) {
-        var postTitle = name;
-        setReminder(postTitle, tDate);
+      $$('.calendar-day').on('mousedown', function(){
+         // var tDate = $$('.calendar-day').attr('data-date');
+          tDate = ($('div').find('.calendar-selected-date').text());
+          app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+ tDate +'</span>', function (name) {
+          var postTitle = name;
+          setReminder(postTitle, tDate);
+        });
       });
     }
   }
@@ -161,10 +164,7 @@ $.ajax({
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
             '<div class="card-content">' + 
-              '<div class="card-content-inner">' +
-               '<p>'+value.title.rendered+'</p>' +
-                //'<p class="more-content">Views: '+value.link+'</p>' +
-              '</div>' +
+                '<p style="margin-left:5px">'+value.title.rendered+'</p>' +
             '</div>' +
             '<div class="card-footer">' +
             '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
@@ -179,7 +179,7 @@ $.ajax({
         singlePosts();
         postBookMark();
         console.log(postURL);
-        console.log(data);
+        //console.log(data);
         if (category == 'allPosts'){
           // app.formStoreData('spane-app-offline-data',data);
           app.form.storeFormData('spane-app-offline-data',data);
@@ -226,8 +226,8 @@ getPosts('allPosts', '0');
       url: rootURL + '/posts/'+postid,
       // dataType: 'json',
       success: function(data){
-        $$('#block-popup-content').empty();
-        $$('#block-popup-content').append('<div class="card ks-facebook-card">' +
+        $$('.block-popup-content').empty();
+        $$('.block-popup-content').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
               '<div class="ks-facebook-name">'+data.title.rendered+'</div>' +
@@ -236,7 +236,7 @@ getPosts('allPosts', '0');
             '<div class="card-content">' + 
               '<div class="card-content-inner">' +
                '<p>'+data.content.rendered+'</p>' +
-               '<p class="buttons-row"><a onClick="openBrowser('+data.link+')" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><br/><a  href="whatsapp://send?text='+data.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
+               '<p class="buttons-row"><a href="'+data.link+'" id="read" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><br/><a  href="whatsapp://send?text='+data.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
                 // '<p class="color-gray">Views: '+value.link+'</p>' +
               '</div>' +
             '</div>' +
@@ -285,7 +285,7 @@ $('#search-input').keyup( function(){
 
 //Check update
 var updateVersion = 0;
-var currentVersion = 1.1; //need to connect to device API (suspended for now)
+var currentVersion = 2.0; //need to connect to device API (suspended for now)
 var updateURL = 'http://spaneapp.com';
 $.ajax({
   url: updateURL + '/app-params.json',
@@ -319,33 +319,44 @@ function getOfflineData(){
   if(offlineData != null){
      $$('#content-block-main').empty();
       $.each(offlineData, function(index, value) {
-            $$('#content-block-main').append('<div class="card ks-facebook-card">' +
-             '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
-              '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
-              '<div class="ks-facebook-date">'+value.date+'</div>' +
-            '</div>' +
-                '<div class="card-content">' + 
-                  '<div class="card-content-inner">' +
-                   '<p>'+value.title.rendered+'</p>' +
-                    //'<p class="more-content">Views: '+value.link+'</p>' +
-                  '</div>' +
-                '</div>' +
-                '<div class="card-footer">' +
-                '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                '<a  href="#"  data-bookmark="'+value.id+'" class="button item-link external post-bookmark-modal"><i class="f7-icons padtop">bookmark</i></a>'+
-                '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" class="button popup-open view-post-btn" data-index="'+offlineData.indexOf(value)+'">View</a></div>' +
-              '<div class="item-inner"><div class="item-title"></div>'+
-        '</div>');
+            $$('#content-block-main').append('<div class="card ks-facebook-card">' + 
+            '<div class="card-header">' +
+                '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
+                '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
+                '<div class="ks-facebook-date">'+value.date+'</div>' +
+              '</div>' +
+              '<div class="card-content">' + 
+                  '<i class="blogPicture"></i>'+
+                  '<p style="margin-left:5px">'+value.title.rendered+'</p>' +
+              '</div>' +
+              '<div class="card-footer">' +
+              '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
+              '<a  href="#" data-bookmark="'+value.id+'" class="button item-link external post-bookmark-modal" data-index="'+offlineData.indexOf(value)+'" ><i class="f7-icons padtop">bookmark</i></a>'+
+              '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'"  data-index="'+offlineData.indexOf(value)+'" class="button popup-open view-post-btn">View</a></div>' +
+            '<div class="item-inner"><div class="item-title"></div>');
+        
+        $('#read').click(function(){
+          // Create notification with click to close
+          var notificationClickToClose = app.notification.create({
+            //icon: '<i class="icon demo-icon">7</i>',
+            title: 'Content Explorer',
+            titleRightText: 'Selibeng.com',
+            text: 'Loading More Information',
+            closeOnClick: true,
+            closeTimeout: 5000,
+          }).open();
+        })
+
         iconCategories(value.categories,value.id);
         titleCategories(value.categories,value.id);
         fDate();
         $('#loader-spinner').hide();
         // singlePosts();
-        getOfflinePost(offlineData);
-        postBookMark();
+        getOfflinePost(offlineData,'spane-app-offline-data');
+        //singlePosts();
+        postBookMarkOffline();
         });
-        // console.log(bookmarks);
+        
     }
 }
 
@@ -357,20 +368,20 @@ function getBookmarks(){
       $.each(bookmarks, function(index, value) {
             $$('#bookmarks-block-main').append('<div class="card ks-facebook-card">' +
               '<div class="card-header">' +
-              '<div class="ks-facebook-avatar"><i class="catIcon'+value.id+'"></i></div>' +
-              '<div class="ks-facebook-name"><span class="postType'+value.id+'"></span></div>' +
+              '<div class="ks-facebook-avatar"><i class="fa fa-bookmark fa-2x" style="color:#008e96;"></i></div>' +
+              '<div class="ks-facebook-name"><span class="postType'+value.id+'">Bookmark</span></div>' +
               '<div class="ks-facebook-date">'+value.date+'</div>' +
             '</div>' +
                 '<div class="card-content">' + 
                   '<div class="card-content-inner">' +
-                   '<p>'+value.title+'</p>' +
+                   '<p>'+value.title.rendered+'</p>' +
                     // '<div class="more-content" id="more-content">'+value.content+'</div>' +
                   '</div>' +
                 '</div>' +
                 '<div class="card-footer">' +
                 '<a  href="whatsapp://send?text='+value.link+'" class="button item-link external"><img src="img/whatsapp_share.png" height="20px" style="margin-top:8px;"></a>'+
-                '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal" data-index="'+bookmarks.indexOf(value)+'">Remove</a>'+
-                '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" class="button popup-open view-post-btn">View</a></div>' +
+                '<a  href="#" id="bookmark-modal" class="button item-link external bookmark-modal" data-index="'+bookmarks.indexOf(value)+'"><i class="fa fa-trash fa-2x" style="padding-top:5px;"></i></a>'+
+                '<a  href="#" data-popup=".popup-post" data-post="'+value.id+'" data-index="'+bookmarks.indexOf(value)+'" class="button popup-open view-post-btn">View</a></div>' +
               '<div class="item-inner"><div class="item-title"></div>'+
         '</div>');
         fDate();
@@ -378,13 +389,16 @@ function getBookmarks(){
         $$('#bk-content').on('click', function(){
             $('#more-content').hide();
         });
+        getOfflinePost(bookmarks,'spane-app-dev-Bookmarks');
         // console.log(bookmarks);
-
      //    $$('#bk-content').click(function(){
      //     $('#more-content').hide();
       //  console.log('Clicked me');
         
        });
+    }else{
+       $$('#bookmarks-block-main').empty();
+       $$('#bookmarks-block-main').append('<center><img style="width:80%;margin-top:30%;" src="img/nobookmarks.png"/></center>');
     }
 }
 
@@ -404,7 +418,7 @@ function postBookMark(){
               // dataType: 'json',
               success: function(data){
                //var bookmarksData = app.formGetData('spane-app-dev-Bookmarks');
-               var bdata = {'id':data.id,'date':data.date,'title':data.title.rendered,'content':data.content.rendered};
+               var bdata = {'id':data.id,'date':data.date,'title':{'rendered':data.title.rendered},'content':{'rendered':data.content.rendered}};
                //var arrBookmarks = [];
                var storedBookmarks = app.form.getFormData('spane-app-dev-Bookmarks');
                if(storedBookmarks==null){
@@ -440,6 +454,44 @@ function postBookMark(){
   });
       
 }
+
+//Offline Bookmark
+function postBookMarkOffline(){
+  
+   $$('.post-bookmark-modal').off('click').on('click', function () {
+      var indexData = $$(this).attr('data-index');
+      console.log(indexData);
+      offlineData = app.form.getFormData('spane-app-offline-data');
+               //var storedBookmarks = app.formGetData('spane-app-dev-Bookmarks');
+        var bdata = offlineData[indexData];
+               //var bookmarksData = app.formGetData('spane-app-dev-Bookmarks');
+               var odata = {'id':bdata.id,'date':bdata.date,'title':{'rendered':bdata.title.rendered},'content':{'rendered':bdata.content.rendered}};
+               //var arrBookmarks = [];
+               var storedBookmarks = app.form.getFormData('spane-app-dev-Bookmarks');
+               if(storedBookmarks==null){
+                  app.form.storeFormData('spane-app-dev-Bookmarks',[odata]);
+               }
+               else{
+                  var arrBookmarks = storedBookmarks;
+                  //console.log(bdata);
+                  arrBookmarks.push(bdata);
+                  app.form.storeFormData('spane-app-dev-Bookmarks',arrBookmarks);
+               }
+               // alert('Post bookmarked, check Bookmarks to see your Post');
+               app.notification.create({
+                    title: 'Your Post has been Bookmarked',
+                    closeIcon: true,
+                    closeOnClick: true,
+                    closeButton: true,
+                    text: bdata.title.rendered,
+                    closeTimeout: 3000,
+                    
+                  }).open();
+    // }
+  });
+      
+}
+
 function clearModal(){
   $$('.popup-close').on('click', function () {
     $$('#block-popup-content').empty();
@@ -447,10 +499,30 @@ function clearModal(){
   });
 }
 
- $$('.tab-2').on('click', function(){
+$$('.tab-2').on('click', function(){
      getBookmarks();
-     console.log('They clicked me me');
- });
+     // console.log('They clicked me me');
+});
+
+$$('.tab-1').on('click', function(){
+  getOfflineData();
+});
+
+$$('.popup-close').on('click', function(){
+   $$('.block-popup-content').empty();
+   getOfflineData();
+});
+
+// $$('.calendar-day').on('click', function(){
+//    var tDate = $$(this).attr('data-date');
+//       // tDdate = new Date(tDate);
+//       // tDate.setDate(tDate.;
+//       app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+ tDate +'</span>', function (name) {
+//         var postTitle = name;
+//         setReminder(postTitle, tDate);
+     
+//  });
+// });
 
 
 function checkConnection() {
@@ -472,17 +544,18 @@ function checkConnection() {
 //Categories: 142=Jobs, 175=scholarships, 277=Remote jobs, 149,380=international jobs,655=self employment,307=Articles,782=advice, 149=tenders
 function iconCategories(categoryId,valueId){
   if(categoryId=='142' || categoryId=='380' || categoryId=='277' || categoryId=='655'){
-    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">briefcase_fill</i>');
+    $$('.catIcon'+valueId).append('<i class="fa fa-briefcase fa-2x" style="color:#008e96;"></i>');
   }else if(categoryId=='175'){
-    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">document_text_fill</i>');
+    $$('.catIcon'+valueId).append('<i class="fa fa-graduation-cap fa-2x" style="color:#008e96;"></i>');
   }else if(categoryId=='149'){
-    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">box_fill</i>');
+    $$('.catIcon'+valueId).append('<i class="fa fa-archive fa-2x" style="color:#008e96;">');
   }else if(categoryId=='307' || categoryId=='782'){
-    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">social_rss_fill</i>');
+    $$('.catIcon'+valueId).append('<i class="fa fa-rss-square fa-2x" style="color:#008e96;"></i>');
   }else{
-    $$('.catIcon'+valueId).append('<i class="f7-icons" style="font-size:35px;">bookmark_fill</i>');
+    $$('.catIcon'+valueId).append('<i class="fa fa-rss-square fa-2x" style="color:#008e96;"></i>');
   }
 }
+
 function titleCategories(categoryId,valueId){
   if(categoryId=='142' || categoryId=='380' || categoryId=='277' || categoryId=='655'){
     $$('.postType'+valueId).append('Job Information');
@@ -493,97 +566,100 @@ function titleCategories(categoryId,valueId){
   }else if(categoryId=='307' || categoryId=='782'){
     $$('.postType'+valueId).append('Blogs & Articles');
   }else{
-    $$('.postType'+valueId).append('Site Opportunity');
+    $$('.postType'+valueId).append('Blogs & Articles');
   }
 }
 
 //Remove Bookmarks
 function removeBookmarks(offlineData, value){
-    $('.bookmark-modal').on('click', function(){
-      //console.log('clicked');
-      var indexData = $$(this).attr('data-index');
-               //var storedBookmarks = app.formGetData('spane-app-dev-Bookmarks');
-               offlineData.splice(indexData,1);
-               //console.log(indexData);
-              
-              app.form.storeFormData('spane-app-dev-Bookmarks',offlineData);
-              // alert('Your Post has been Removed in Bookmarks');
-              app.notification.create({
-                    title: 'Bookmark Removed',
-                    closeIcon: true,
-                    closeOnClick: true,
-                    closeButton: true,
-                    text: 'Your Post has been Removed in Bookmarks',
-                    closeTimeout: 3000,
-                    
-                  }).open();
-              //location.reload(true);
-    });
+    $('.bookmark-modal').off('click').on('click', function(){
+      app.dialog.confirm('Are you sure you want to remove bookmark?','Bookmark Removal',function(){
+          //console.log('clicked');
+          var indexData = $$(this).attr('data-index');
+          //var storedBookmarks = app.formGetData('spane-app-dev-Bookmarks');
+          offlineData.splice(indexData,1);
+          //console.log(indexData);
+
+          app.form.storeFormData('spane-app-dev-Bookmarks',offlineData);
+            // alert('Your Post has been Removed in Bookmarks');
+            app.notification.create({
+            title: 'Bookmark Removed',
+            closeIcon: true,
+            closeOnClick: true,
+            closeButton: true,
+            text: 'Your Post has been Removed in Bookmarks',
+            closeTimeout: 3000,
+          }).open();
+            
+          getBookmarks();
+        });
+      });
          
 }
 
-function getOfflinePost(offlineData){
+function getOfflinePost(offlineData, dataStorage){
     $$('.view-post-btn').off('click').on('click', function(){
-      //console.log('clicked');
+      offlineData = app.form.getFormData(dataStorage);
       var indexData = $$(this).attr('data-index');
                //var storedBookmarks = app.formGetData('spane-app-dev-Bookmarks');
         var post = offlineData[indexData];
                //console.log(indexData);
-          $$('#block-popup-content').empty();
-          $$('#block-popup-content').append('<div class="card ks-facebook-card">' +
+        $$('.block-popup-content').empty();
+        $$('.block-popup-content').append('<div class="card ks-facebook-card">' +
           '<div class="card-header">' +
               '<div class="ks-facebook-avatar"><i class="f7-icons">bookmark</i></div>' +
-              '<div class="ks-facebook-name">Selibeng.com | LesCAss</div>' +
+              '<div class="ks-facebook-name">'+post.title.rendered+'</div>' +
               '<div class="ks-facebook-date">'+post.date+'</div>' +
             '</div>' +
             '<div class="card-content">' + 
               '<div class="card-content-inner">' +
-              '<p><h3>'+post.title.rendered+'</h3></p>' +
                '<p>'+post.content.rendered+'</p>' +
-               '<p class="buttons-row"><a href="'+post.link+'" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><a  href="whatsapp://send?text='+post.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
+               '<p class="buttons-row"><a href="'+post.link+'" id="read" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><br/><a  href="whatsapp://send?text='+post.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
                 // '<p class="color-gray">Views: '+value.link+'</p>' +
               '</div>' +
             '</div>' +
           '<div class="item-inner"><div class="item-title"></div>');
         //console.log(value.title);
         fDate();
-              //location.reload(true);
     });
          
 }
 
 //Set Calendar reminder
 function setReminder(title, date){
-               var bdata = {'title':title,'date':date};
-               var reminders = app.form.getFormData('spane-app-dev-reminders');
-               if(reminders==null){
-                  app.form.storeFormData('spane-app-dev-reminders',[bdata]);
-               }
-               else{
-                  var sReminders = reminders;
-                  sReminders.push(bdata);
-                  app.form.storeFormData('spane-app-dev-reminders',sReminders);
-               }
+   var bdata = {'title':title,'date':date};
+   var reminders = app.form.getFormData('spane-app-dev-reminders');
+   if(reminders==null){
+      app.form.storeFormData('spane-app-dev-reminders',[bdata]);
+   }
+   else{
+      var sReminders = reminders;
+      sReminders.push(bdata);
+      app.form.storeFormData('spane-app-dev-reminders',sReminders);
+   }
 }
 // Check if there are any set Calendar Post Reminders
 function checkReminders(){
   var reminders = app.form.getFormData('spane-app-dev-reminders');
-  if(reminders==null){
-                  var today = new Date();
+  if(reminders!=null){
+                  var today = new Date().toLocaleDateString();
+                   //console.log(reminders);
                   $.each(reminders, function(index, value) {
-                    //notify a day before
-                      if (reminders.tDate == today.getDate() - 1){
+                    //notify a day of reminders
+                    //console.log(value.date);
+                    // var minDate = today;
+                    // console.log(minDate);
+                      if (value.date === today){
                         app.notification.create({
                         title: 'Reminder! Reminder',
                         closeIcon: true,
                         closeOnClick: true,
                         closeButton: true,
-                        text: 'You have post(s) that are due tommorrow, check your bookmarks',
-                        closeTimeout: 3000, 
+                        text: 'You have reminders that are due today,'+ value.title +' You might wanna check your bookmarks',
+                        closeTimeout: 4000, 
                         }).open();
                       } 
                   });
-
    }
 }
 
@@ -616,14 +692,8 @@ function openBrowser(url_link) {
    }
 }
 
+
 clearModal();
-  //initialize bookmarks
-  // getBookmarks();
-  //initialize offline data
 getOfflineData();
-// singlePosts();
-// getPosts('allPosts', ' ');
-// console.log(postURL);
-//checkConnection();
-setReminder();
 checkReminders();
+

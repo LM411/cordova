@@ -7,11 +7,20 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-inappbrowser": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
+      "PACKAGE_NAME": "www.spaneapp.com"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "www.spaneapp.com"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "www.spaneapp.com"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "www.spaneapp.com"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "www.spaneapp.com"
     }
   },
   "dependent_plugins": {}

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/kitchen-sink.css">
   <link rel="stylesheet" href="css/my-app.css">
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="img/icon_circle.png">
   <link rel="icon" href="img/icon_circle.png">
 </head>
@@ -33,10 +34,10 @@
             <div class="block-title">Categories</div>
             <div class="list links-list">
               <ul>
-                <li><a class="item-content item-link" href="/jobs/"><i class="icon f7-icons">briefcase_fill</i>Jobs Opportunities</a></li>
-                <li><a href="/Scholarships/"><i class="icon f7-icons">document_text_fill</i>Scholarships</a></li>
-                <li><a href="/tenders/"><i class="icon f7-icons">box_fill</i>Tender information</a></li>
-                <li><a href="/blogs/"><i class="icon f7-icons">social_rss_fill</i>Opportunities Blog</a></li>
+                <li><a class="item-content item-link" href="/jobs/"><i class="fa fa-briefcase fa-2x"></i>Job Opportunities</a></li>
+                <li><a href="/Scholarships/"><i class="fa fa-graduation-cap fa-2x"></i>Scholarships</a></li>
+                <li><a href="/tenders/"><i class="fa fa-archive fa-2x"></i>Tender information</a></li>
+                <li><a href="/blogs/"><i class="fa fa-rss-square fa-2x"></i>Opportunities Blog</a></li>
               </ul>
             </div>
           </div>
@@ -73,7 +74,10 @@
                   <i class="searchbar-icon"></i>
                   <span class="input-clear-button"></span>
                 </div>
-                <span class="searchbar-disable-button">Cancel</span>
+                <span class="searchbar-disable-button">
+                  <i class="icon f7-icons ios-only" style="font-size: 25px;margin-top: 22%">chevron_left</i>
+                  <i class="icon material-icons md-only" onClick="location.reload()" style="font-size: 25px;margin-top: 22%">chevron_left</i>
+                </span>
               </div>
             </form>
           </div>
@@ -82,12 +86,12 @@
         <div class="page-content">
           <div class="toolbar tabbar">
             <div class="toolbar-inner">
-              <a href="#tab-1" class="tab-link tab-link-active">Opportunities</a>
+              <a href="#tab-1" class="tab-link tab-1 tab-link-active">Opportunities</a>
               <a href="#tab-2" class="tab-link tab-2">Bookmarks</a>
             </div>
           </div>
 
-          <div class="tabs-swipeable-wrap">
+          <div class="tabs-animated-wrap">
             <div class="tabs">
               <div id="tab-1" class="page-content tab tab-active">
                 <div class="content-block-main" id="content-block-main" style="margin-top: -2.5%">
@@ -96,11 +100,10 @@
                 </div>
               </div>
               <div id="tab-2" class="page-content tab">
-                <div class="block" id="bookmarks-block-main" style="margin-top: -2.5%">
-                </div>
-              </div>
-              <div id="tab-3" class="page-content tab">
-                <div class="block">
+                <div id="bookmarks-block-main" style="margin-top: -2.5%">
+
+                  <h3>you have no bookmarks at the moment</h3>
+
                 </div>
               </div>
             </div>
@@ -115,12 +118,8 @@
               <i class="icon material-icons md-only">close</i>
             </a>
             <div class="fab-buttons fab-buttons-top">
-              <p class="buttons-row"><a href="#tab-2" class="tab-link tab-2"><i id="bookmarks-default" class="icon material-icons">bookmark</i></a></p>
-
                <p class="buttons-row"><a href="whatsapp://send?text=Hey if you want to keep up to date with the latest jobs openings follow this link : http://www.spaneapp.com/" class="item-link external"><i class="icon material-icons">share</i></a></p>
-
                <p class="buttons-row" id="demo-calendar-modal"><a href="#" class="item-link"><i class="icon material-icons">today</i></a></p>
-
                <p class="buttons-row"><a href="#" data-popup=".popup-doc" class="popup-open"><i class="icon material-icons">help</i></a></p>
             </div>
           </div>
@@ -152,12 +151,14 @@
               are advised.<br/><br/>
               
               <b>Features</b><br/>
-              1. View posts<br/>
-              2. View posts details<br/>
-              3. Share posts<br/>
-              4. Share app link<br/>
-              5. View calendar<br/>
-              6. App documentation<br/><br/>
+              1. View grouped opportunities<br/> (Jobs, Tenders, Scholarships & Blogs)<br/>
+              2. View  details of each featured opportunity<br/>
+              3. Share featured opportunities on whatsapp<br/>
+              4. Engage offline mode to view opportunities<br/>
+              Used when there is no data connection or poor internet connectivity<br/>
+              5. Set calender deadline reminders<br/>
+              6. Bookmark opportunities for later viewing<br/>
+              7. App documentation<br/><br/>
               
              
               <b>Terms of Use</b><br/>
@@ -191,14 +192,41 @@
               </div>
               <!--END OF NAVIGATION BAR-->
               <div class="page-content">
-              
-              <div id="loader-spinner"><center><img src="img/spinner_posts.gif" style="display: block;margin:30% auto;" height="60%" width="60%"></center></div>
-              <div class="block" id="block-popup-content">
-                <!-- Post popup content here -->
+                <div id="loader-spinner"><center><img src="img/spinner_posts.gif" style="display: block;margin:30% auto;" height="60%" width="60%"></center></div>
+                <div class="block block-popup-content" id="block-popup-content">
+                  <!-- Post popup content here -->
+                </div>
               </div>
             </div>
+          </div>
+
+          <!-- Post popUp-bookmarks-->
+          <div class="popup popup-post-bookmarks">
+            <div class="page">
+              <!--NAVIGATION BAR-->
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <div class="left">
+                    <a href="#" class="link icon-only">
+                      <i class=""><img src="img/icon.png" style="margin-top: 30%;"></i>
+                    </a>
+                  </div>
+                  <div class="right" >
+                    <a href="#" class="link icon-only popup-close" title="Menu">
+                      <i class="icon f7-icons ios-only">close</i>
+                      <i class="icon material-icons md-only">close</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!--END OF NAVIGATION BAR-->
+              <div class="page-content">
+                <div id="loader-spinner"><center><img src="img/spinner_posts.gif" style="display: block;margin:30% auto;" height="60%" width="60%"></center></div>
+                <div class="block" id="block-popup-content">
+                  <!-- Post popup content here -->
+                </div>
+              </div>
             </div>
-            
           </div>
           </div>
         </div>
@@ -208,7 +236,7 @@
   <script src="dist/js/jquery.js"></script>
   <script src="dist/js/framework7.min.js"></script>
   <script src="js/routes.js"></script>
-  <script src="cordova.js"></script>
+  <!-- <script src="cordova.js"></script> -->
   <script src="js/app.js"></script>
 </body>
 </html>

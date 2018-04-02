@@ -1898,7 +1898,7 @@ function onScriptLoadingComplete (moduleList, finishPluginLoading) {
     finishPluginLoading();
 }
 
-// Handler for the cordova_plugins.js content.
+// Handler for the cordova-plugins.js content.
 // See plugman's plugin_loader.js for the details of this object.
 // This function is only called if the really is a plugins array that isn't empty.
 // Otherwise the onerror response handler will just call finishPluginLoading().
@@ -1944,7 +1944,7 @@ exports.load = function (callback) {
         console.log('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';
     }
-    injectIfNecessary('cordova/plugin_list', pathPrefix + 'cordova_plugins.js', function () {
+    injectIfNecessary('cordova/plugin_list', pathPrefix + 'cordova-plugins.js', function () {
         var moduleList = require('cordova/plugin_list');
         handlePluginsObject(pathPrefix, moduleList, callback);
     }, callback);
@@ -1957,7 +1957,7 @@ define("cordova/pluginloader_b", function(require, exports, module) {
 
 var modulemapper = require('cordova/modulemapper');
 
-// Handler for the cordova_plugins.js content.
+// Handler for the cordova-plugins.js content.
 // See plugman's plugin_loader.js for the details of this object.
 function handlePluginsObject (moduleList) {
     // if moduleList is not defined or empty, we've nothing to do

@@ -288,7 +288,7 @@ $('#search-input').keyup( function(){
 
 //Check update
 var updateVersion = 0;
-var currentVersion = 2.0; //need to connect to device API (suspended for now)
+var currentVersion = 1.1; //need to connect to device API (suspended for now)
 var updateURL = 'http://spaneapp.com';
 $.ajax({
   url: updateURL + '/app-params.json',

@@ -58,15 +58,18 @@ var calendarModal = app.calendar.create({
   footer: true,
   dateFormat: 'm/d/yyyy',
   on:{
-    calendarDayClick: function(){
-      $$('.calendar-day').on('mousedown', function(){
-         // var tDate = $$('.calendar-day').attr('data-date');
-          tDate = ($('div').find('.calendar-selected-date').text());
-          app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+ tDate +'</span>', function (name) {
+    calendarDayClick: function(calendar, value, year, month, day){
+      // $$('.calendar-day').on('mouseup', function(){
+         // var tDate = $$(value).attr('data-date');
+         // var tmonth = Number(month) + 1;
+         var tDate = (Number(month) + 1) +'/'+day+'/'+year;
+          // tDate = ($('div').find('.calendar-selected-date').text());
+          console.log(tDate);
+          app.dialog.prompt('Please Enter Post title below','Setting a Reminder on <span class="greenl">'+tDate+'</span>', function (name) {
           var postTitle = name;
           setReminder(postTitle, tDate);
         });
-      });
+      // });
     }
   }
 });

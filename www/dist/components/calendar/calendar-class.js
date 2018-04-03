@@ -383,12 +383,12 @@ class Calendar extends Framework7Class {
       if (params.rangePicker && value.length === 2) {
         for (i = new Date(value[0]).getTime(); i <= new Date(value[1]).getTime(); i += 24 * 60 * 60 * 1000) {
           valueDate = new Date(i);
-          $wrapperEl.find(`.calendar-day[data-date="${valueDate.getFullYear()}-${valueDate.getMonth()}-${valueDate.getDate()}"]`).addClass('calendar-day-selected');
+          $wrapperEl.find(`.calendar-day[data-date="${valueDate.getMonth()}/${valueDate.getDate()}/${valueDate.getFullYear()}"]`).addClass('calendar-day-selected');
         }
       } else {
         for (i = 0; i < calendar.value.length; i += 1) {
           valueDate = new Date(value[i]);
-          $wrapperEl.find(`.calendar-day[data-date="${valueDate.getFullYear()}-${valueDate.getMonth()}-${valueDate.getDate()}"]`).addClass('calendar-day-selected');
+          $wrapperEl.find(`.calendar-day[data-date="${valueDate.getMonth()}/${valueDate.getDate()}/${valueDate.getFullYear()}"]`).addClass('calendar-day-selected');
         }
       }
     }
@@ -892,7 +892,7 @@ class Calendar extends Framework7Class {
         const dayYear = dayDate.getFullYear();
         const dayMonth = dayDate.getMonth();
         rowHtml += `
-          <div data-year="${dayYear}" data-month="${dayMonth}" data-day="${dayNumber}" class="calendar-day${addClass}" data-date="${dayYear}-${dayMonth}-${dayNumber}">
+          <div data-year="${dayYear}" data-month="${dayMonth}" data-day="${dayNumber}" class="calendar-day${addClass}" data-date="${dayMonth}/${dayNumber}/${dayYear}">
             <span>${dayNumber}</span>
           </div>`.trim();
       }

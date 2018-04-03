@@ -34,7 +34,7 @@ export default {
       weekendDays: [0, 6], // Sunday and Saturday
       multiple: false,
       rangePicker: false,
-      dateFormat: 'yyyy-mm-dd',
+      dateFormat: 'd/m/yyyy',
       direction: 'horizontal', // or 'vertical'
       minDate: null,
       maxDate: null,

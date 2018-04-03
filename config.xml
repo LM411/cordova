@@ -16,8 +16,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="5000" />
     <preference name="FadeSplashScreen" value="true" />
-    <preference name="FadeSplashScreenDuration" value="1000" />
-    <preference name="ShowSplashScreenSpinner" value="true" />
+    <preference name="FadeSplashScreenDuration" value="500" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <content src="index.html" />
     <access origin="*" />

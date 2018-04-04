@@ -13,7 +13,6 @@
     <preference name="orientation" value="portrait" />
     <preference name="KeepRunning" value="false" />
     <preference name="android-build-tool" value="gradle" />
-    
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
@@ -38,7 +37,7 @@
         <preference name="FadeSplashScreenDuration" value="500" />
         <preference name="ShowSplashScreenSpinner" value="false" />
         <preference name="SplashMaintainAspectRatio" value="true" />
-        <splash src="www/screen.png" />
+        <splash src="screen.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

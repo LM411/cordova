@@ -24,7 +24,7 @@
     <preference name="FadeSplashScreenDuration" value="500" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <splash platform="android" src="res/screen/android/splash-land-hdpi.png" />
+    <splash platform="android" qualifier="port-hdpi" src="res/screen/android/splash-land-hdpi.png" />
     <access origin="http://www.selibeng.com" />
     <access origin="*selibeng.com" />
     <access origin="https://www.selibeng.com" />

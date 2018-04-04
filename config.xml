@@ -37,7 +37,7 @@
         <preference name="FadeSplashScreenDuration" value="500" />
         <preference name="ShowSplashScreenSpinner" value="false" />
         <preference name="SplashMaintainAspectRatio" value="true" />
-        <splash src="screen.png"/>
+        <splash src="img/screen.png"/>
 
     </platform>
     <platform name="ios">

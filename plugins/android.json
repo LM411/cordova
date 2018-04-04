@@ -16,6 +16,9 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "www.spaneapp.com"
     },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "www.spaneapp.com"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "ls.spaneapp.com"
     }

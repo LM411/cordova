@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ls.spaneapp.com" version="2.0" versionCode="202020" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="ls.spaneapp.com" version="2.0" versionCode="202021" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Spane</name>
     <description>
       A job seeking platform to help better your chances for that dream job

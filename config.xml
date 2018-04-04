@@ -24,6 +24,10 @@
     <preference name="FadeSplashScreenDuration" value="500" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
+    <splash platform="android" qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+    <splash platform="android" qualifier="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+    <splash platform="android" qualifier="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+    <splash platform="android" qualifier="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
     <access origin="http://www.selibeng.com" />
     <access origin="*selibeng.com" />
     <access origin="https://www.selibeng.com" />
@@ -40,7 +44,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <splash src="www/img/screen.png" />
+    <splash src="www/img/splash.png" />
     <icon src="www/img/icon_circle.png" />
     <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="^7.0.0" />

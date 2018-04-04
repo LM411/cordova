@@ -617,7 +617,7 @@ function getOfflinePost(offlineData, dataStorage){
             '<div class="card-content">' + 
               '<div class="card-content-inner">' +
                '<p>'+post.content.rendered+'</p>' +
-               '<p class="buttons-row"><a href="'+post.link+'" id="read" class="button button-raised button-fill color-teal item-link external" style="font-weight:bold;">Read More</a><br/><a  href="whatsapp://send?text='+post.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
+               '<p class="buttons-row"><br/><a  href="whatsapp://send?text='+post.link+'" style="text-align:center;font-weight:bold;" class="button button-raised button-fill color-teal item-link external">Share Post</a></p>'+
                 // '<p class="color-gray">Views: '+value.link+'</p>' +
               '</div>' +
             '</div>' +

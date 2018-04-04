@@ -20,7 +20,7 @@
       "PACKAGE_NAME": "www.spaneapp.com"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "ls.spaneapp.com"
+      "PACKAGE_NAME": "www.spaneapp.com"
     }
   },
   "dependent_plugins": {}
